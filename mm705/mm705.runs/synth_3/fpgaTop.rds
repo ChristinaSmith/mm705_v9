@@ -1,0 +1,44 @@
+#-----------------------------------------------------------
+# Vivado v2012.3 (64-bit)
+# Build 209282 by xbuild on Thu Oct 18 20:46:04 MDT 2012
+# Start of session at: Thu Nov 15 10:16:13 2012
+# Process ID: 9397
+# Log file: /home/cms/projects/mm705/mm705/mm705.runs/synth_3/fpgaTop.rds
+# Journal file: /home/cms/projects/mm705/mm705/mm705.runs/synth_3/vivado.jou
+#-----------------------------------------------------------
+INFO: [Common 17-81] Feature available: Implementation
+INFO: [Common 17-81] Feature available: Synthesis
+INFO: [Device 21-36] Loading parts and site information from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+source fpgaTop.tcl
+# create_project -in_memory
+# set_property part xc7k325tffg900-1 [current_project]
+# set_param project.compositeFile.enableAutoGeneration 0
+# read_verilog {
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/SizedFIFO.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO1.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/BRAM2.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/SyncResetA.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkReceiver.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkMLProducer.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkMLConsumer.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFDU.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFAU.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFTop_mm705.v
+#   /home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/fpgaTop_mm705.v
+# }
+# read_xdc /home/cms/projects/mm705/mm705/mm705.srcs/constrs_1/imports/mm705_v3/kc705.xdc
+# set_property used_in_implementation false [get_files /home/cms/projects/mm705/mm705/mm705.srcs/constrs_1/imports/mm705_v3/kc705.xdc]
+# set_param synth.vivado.isSynthRun true
+# set_property webtalk.parent_dir /home/cms/projects/mm705/mm705/mm705.data/wt [current_project]
+# set_property parent.project_dir /home/cms/projects/mm705/mm705 [current_project]
+# synth_design -top fpgaTop -part xc7k325tffg900-1 -effort_level high
+ERROR: [Common 17-161] Invalid option value 'high' specified for 'effort_level'.
+
+    while executing
+"synth_design -top fpgaTop -part xc7k325tffg900-1 -effort_level high"
+    (file "fpgaTop.tcl" line 29)
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 15 10:16:17 2012...

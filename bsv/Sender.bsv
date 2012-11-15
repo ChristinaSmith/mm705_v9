@@ -27,6 +27,8 @@ module mkSender(SenderIfc);
 FIFO#(MLMesg)           mesgIngressF      <- mkFIFO;     // Message-Level (ML) Inpt to this module
 FIFO#(HexBDG)           datagramEgressF   <- mkFIFO;     // Datagram Egress from the module
 
+FIFO#(Tuple2#(UInt#(5), HexByte))  bsEnqF  <- mkFIFO;
+
 // Frame-Composition Coordinating State...
 Reg#(FrmCompState)      fcs           <- mkReg(FrmHead); // State variable for the Frame Composition Process   
 Reg#(Bool)              madeMeta      <- mkReg(False);   // Aux variable to signal if the Metadata MH/MD has been made
@@ -54,6 +56,7 @@ Reg#(Bool)              bytesValid    <- mkReg(False);
 // Frame Source/Departure Logic
 Reg#(UInt#(16))         frameSrcCnt   <- mkReg(0);
 
+Reg#(Bool)              eof           <- mkReg(False);
 // Functions...
 function Bit#(8) addX (Bit#(8) y, Bit#(8) x) = y + x;
 
@@ -82,9 +85,11 @@ rule genFH (!fhValid);
 endrule
 
 // enqFH is always the first enq rule called in the Frame Composition Process...
-rule enqFH (fhValid && fcs==FrmHead && byteShifter.space_available >= 10);
+//rule enqFH (fhValid && fcs==FrmHead && byteShifter.space_available >= 10);
+rule enqFH (fhValid && fcs==FrmHead);
    Vector#(10,Bit#(8)) fhV = toByteVector(fh); // Convert fh to a ByteVector
-   byteShifter.enq(10, padHexByte(fhV));       // Enq into ByteShifter
+//   byteShifter.enq(10, padHexByte(fhV));       // Enq into ByteShifter
+   bsEnqF.enq(tuple2(10, padHexByte(fhV)));
    bytesInFrame <= bytesInFrame + 10;          // Increase bytesInFrame by number of bytes enqued into ByteShifter
    fhValid <= False;                           // Done with Frame Header
    fcs     <= MsgHead;                         // Move on to MsgHead
@@ -109,7 +114,8 @@ rule genMH (!mhValid && fcs==MsgHead);
 endrule
 
 // enqMH will file to 24/12=2 cycles to enque a Message Header that has been made valid...
-rule enqMH (mhValid && fcs==MsgHead && byteShifter.space_available >= 12);
+//rule enqMH (mhValid && fcs==MsgHead && byteShifter.space_available >= 12);
+rule enqMH (mhValid && fcs==MsgHead);
   Vector#(24, Bit#(8)) mhV = toByteVector(mh);
   Vector#(12, Bit#(8)) mhhV = (mhPhase==0) ? takeAt(0,mhV) : takeAt(12,mhV);
   mhPhase <= (mhPhase==0) ? 1 : 0;
@@ -117,7 +123,8 @@ rule enqMH (mhValid && fcs==MsgHead && byteShifter.space_available >= 12);
     mhValid <= False;    // Done with Message Header
     fcs     <= MsgData;  // Move on to MsgData
   end
-  byteShifter.enq(12, padHexByte(mhhV));  // Enq into ByteShifter
+//  byteShifter.enq(12, padHexByte(mhhV));  // Enq into ByteShifter
+   bsEnqF.enq(tuple2(12, padHexByte(mhhV)));
    bytesInFrame <= bytesInFrame + 12;          // Increase bytesInFrame by number of bytes enqued into ByteShifter
 endrule
 
@@ -127,7 +134,8 @@ endrule
 
 UInt#(6) bytesToEnq = truncate(min(bytesRemainMD, 16)); // Offer the min of "want" and "can"
 
-rule enqMD(fcs==MsgData && byteShifter.space_available >= bytesToEnq);
+//rule enqMD(fcs==MsgData && byteShifter.space_available >= bytesToEnq);
+rule enqMD(fcs==MsgData);
   Bool endOfFrame = madeMeta && (bytesRemainMD-extend(bytesToEnq)==0);
 
   RDMAMeta rMeta = metaMorpher(getMeta(mesgIngressF.first)); // Get and transform the metadata
@@ -145,10 +153,16 @@ rule enqMD(fcs==MsgData && byteShifter.space_available >= bytesToEnq);
   end
 
   // Regardless of what kind of MD, do this...
-  byteShifter.enq(truncate(bytesToEnq), dataToEnq);
+  //byteShifter.enq(truncate(bytesToEnq), dataToEnq);
+  bsEnqF.enq(tuple2(truncate(bytesToEnq), dataToEnq));
   bytesInFrame <= (endOfFrame) ? 0 : bytesInFrame + extend(bytesToEnq); 
   bytesRemainMD <= bytesRemainMD - extend(bytesToEnq);
   mesgIngressF.deq;
+endrule
+
+rule enqByteShifter(byteShifter.space_available >= extend(tpl_1(bsEnqF.first)));
+  byteShifter.enq(tpl_1(bsEnqF.first), tpl_2(bsEnqF.first));
+  bsEnqF.deq;
 endrule
 
 ////////////// Deq ByteShifter //////////////////
@@ -161,21 +175,22 @@ rule frameSourceComplete(bytesToDeq == 0);
   $display("[%0d] Frame Source token %0d dequeued", $time, frameSrcCnt);
 endrule
 
-Bool eof = (bytesValid) ? (bytesToDeq - bytesDeqd <= 16) : False;
+
 
 rule frameSourcePump(byteShifter.bytes_available >= 16 || eof);
   HexBDG out = ?;
+  eof <= (bytesValid) && (bytesToDeq - bytesDeqd <= 32) && !eof;
   out.data = byteShifter.bytes_out;
   out.nbVal = (eof) ? truncate(bytesToDeq - bytesDeqd) : 16;
   out.isEOP = eof;
- // $display("Bytes on wire: %0x", reverse(out.data));
   byteShifter.deq(out.nbVal);
-  datagramEgressF.enq(out);
+ // $display("Bytes on wire: %0x", reverse(out.data));
   bytesDeqd <= (eof) ? 0 : bytesDeqd + 16;
   if(eof)begin
     bytesToDeq <= 0;
     bytesValid <= False;
   end
+  datagramEgressF.enq(out);
 endrule
 
   interface Client datagram;

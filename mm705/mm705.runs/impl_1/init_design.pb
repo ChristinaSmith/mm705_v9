@@ -1,4 +1,12 @@
 
+L
+-Analyzing %s Unisim elements for replacement
+17*netlist2
+180Z29-17
+O
+2Unisim Transformation completed in %s CPU seconds
+28*netlist2
+0Z29-28
 ï
 Loading clock regions from %s
 13*device2^
@@ -31,47 +39,48 @@ K/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/kintex7/ConfigModes.xmlZ21
 /Loading list of drcs for the architecture : %s
 17*drc2G
 E/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/kintex7/drc.xmlZ23-17
-ï
+ë
 Parsing XDC File [%s]
-179*designutils2_
-]/home/cms/projects/mm705_v3/mm705/mm705.runs/impl_1/.Xil/Vivado-13401-core980/dcp/fpgaTop.xdcZ20-179
-û
+179*designutils2[
+Y/home/cms/projects/mm705/mm705/mm705.runs/impl_1/.Xil/Vivado-8112-core980/dcp/fpgaTop.xdcZ20-179
+ö
 Finished Parsing XDC File [%s]
-178*designutils2_
-]/home/cms/projects/mm705_v3/mm705/mm705.runs/impl_1/.Xil/Vivado-13401-core980/dcp/fpgaTop.xdcZ20-178
-∆
+178*designutils2[
+Y/home/cms/projects/mm705/mm705/mm705.runs/impl_1/.Xil/Vivado-8112-core980/dcp/fpgaTop.xdcZ20-178
+®
 !Unisim Transformation Summary:
-%s111*project2â
-Ü  A total of 3393 instances were transformed.
-  (MUXCY,XORCY) => CARRY4: 10 instances
-  FD => FDCE: 1474 instances
+%s111*project2Î
+Ë  A total of 5438 instances were transformed.
+  (MUXCY,XORCY) => CARRY4: 12 instances
+  FD => FDCE: 2202 instances
   FDC => FDCE: 16 instances
-  FDE => FDCE: 1320 instances
-  FDR => FDRE: 570 instances
-  FDS => FDSE: 2 instances
+  FDE => FDCE: 2301 instances
+  FDR => FDRE: 856 instances
+  FDS => FDSE: 4 instances
   IBUFGDS => IBUFDS: 1 instances
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 46 instances
 Z1-111
 1
-%Phase 0 | Netlist Checksum: cced50d2
+%Phase 0 | Netlist Checksum: 50be9e8c
 *common
 •
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2
 read_checkpoint: 2
 
-00:00:102
+00:00:122
 
-00:00:102	
-543.4732	
-397.812Z17-268
-â
+00:00:122	
+554.5982	
+408.938Z17-268
+Ü
 Parsing XDC File [%s]
-179*designutils2S
-Q/home/cms/projects/mm705_v3/mm705/mm705.srcs/constrs_1/imports/mm705_v3/kc705.xdcZ20-179
-í
+179*designutils2P
+N/home/cms/projects/mm705/mm705/mm705.srcs/constrs_1/imports/mm705_v3/kc705.xdcZ20-179
+è
 Finished Parsing XDC File [%s]
-178*designutils2S
-Q/home/cms/projects/mm705_v3/mm705/mm705.srcs/constrs_1/imports/mm705_v3/kc705.xdcZ20-178
+178*designutils2P
+N/home/cms/projects/mm705/mm705/mm705.srcs/constrs_1/imports/mm705_v3/kc705.xdcZ20-178
 
 
 End Record

@@ -20,15 +20,15 @@ Starting %s Task
 103*constraints2
 Logic OptimizationZ18-103
 4
-(Logic Optimization | Checksum: f1058229
+(Logic Optimization | Checksum: c19f2f46
 *common
 ²
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2
 Netlist sorting complete. 2
-00:00:00.042
-00:00:00.042	
-589.5232
+00:00:00.082
+00:00:00.082	
+612.3912
 0.000Z17-268
 <
 
@@ -42,13 +42,13 @@ Phase %s%s
 49*opt2
 0Z31-49
 2
-&Phase 1 Retarget | Checksum: 41b80c17
+&Phase 1 Retarget | Checksum: 85d1c09d
 *common
 y
 
 %s
 *constraints2b
-`Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.17 . Memory (MB): peak = 589.523 ; gain = 0.000
+`Time (s): cpu = 00:00:00.28 ; elapsed = 00:00:00.28 . Memory (MB): peak = 612.391 ; gain = 0.000
 H
 
 Phase %s%s
@@ -58,15 +58,15 @@ Phase %s%s
 0
 Eliminated %s cells.
 10*opt2
-126Z31-10
+184Z31-10
 >
-2Phase 2 Constant Propagation | Checksum: 01bc21cf
+2Phase 2 Constant Propagation | Checksum: f3a46a4f
 *common
 y
 
 %s
 *constraints2b
-`Time (s): cpu = 00:00:00.52 ; elapsed = 00:00:00.52 . Memory (MB): peak = 589.523 ; gain = 0.000
+`Time (s): cpu = 00:00:00.90 ; elapsed = 00:00:00.90 . Memory (MB): peak = 612.391 ; gain = 0.000
 9
 
 Phase %s%s
@@ -76,34 +76,34 @@ Phase %s%s
 ;
  Eliminated %s unconnected nets.
 12*opt2
-369Z31-12
+834Z31-12
 ;
 !Eliminated %s unconnected cells.
 11*opt2
-31Z31-11
+38Z31-11
 /
-#Phase 3 Sweep | Checksum: f83fa1b2
+#Phase 3 Sweep | Checksum: f6e09936
 *common
-y
+s
 
 %s
-*constraints2b
-`Time (s): cpu = 00:00:00.70 ; elapsed = 00:00:00.70 . Memory (MB): peak = 589.523 ; gain = 0.000
+*constraints2\
+ZTime (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 612.391 ; gain = 0.000
 @
-4Ending Logic Optimization Task | Checksum: f83fa1b2
+4Ending Logic Optimization Task | Checksum: f6e09936
 *common
-y
+s
 
 %s
-*constraints2b
-`Time (s): cpu = 00:00:00.71 ; elapsed = 00:00:00.70 . Memory (MB): peak = 589.523 ; gain = 0.000
+*constraints2\
+ZTime (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 612.391 ; gain = 0.000
 ²
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2
 Netlist sorting complete. 2
-00:00:00.022
-00:00:00.022	
-589.5232
+00:00:00.042
+00:00:00.042	
+612.3912
 0.000Z17-268
 <
 %Done setting XDC timing constraints.
@@ -117,11 +117,11 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2
 opt_design: 2
 
-00:00:082
+00:00:102
 
-00:00:072	
-591.5552
-48.082Z17-268
+00:00:092	
+615.5162
+60.918Z17-268
 4
 Writing XDEF routing.
 211*designutilsZ20-211
@@ -135,10 +135,10 @@ A
 I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2
 Write XDEF Complete: 2
-00:00:00.142
-00:00:00.142	
-594.5552
-1.000Z17-268
+00:00:00.172
+00:00:00.182	
+621.5162
+0.000Z17-268
 
 
 End Record

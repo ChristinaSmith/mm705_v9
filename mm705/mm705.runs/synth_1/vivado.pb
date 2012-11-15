@@ -43,12 +43,12 @@ WUsing Xilinx IP in: /opt/Xilinx/14.3/ISE_DS/ISE/coregen/ip/xilinx/primary/com/x
 *common
 à
 %s*synth2y
-wstarting Rtl Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 173.973 ; gain = 60.723
+wstarting Rtl Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 173.973 ; gain = 60.691
 
-¢
+ú
 synthesizing module '%s'638*oasys2	
-fpgaTop2[
-W/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/fpgaTop_mm705.v2
+fpgaTop2U
+Q/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/fpgaTop_mm705.v2
 58@Z8-638
 é
 synthesizing module '%s'638*oasys2	
@@ -75,27 +75,27 @@ I
 %s*synth2:
 8	Parameter IOSTANDARD bound to: DEFAULT - type: string 
 
-•
+¶
 %done synthesizing module '%s' (%s#%s)256*oasys2	
 IBUFGDS2
-12
-92C
+12
+142C
 ?/opt/Xilinx/14.3/ISE_DS/PlanAhead/scripts/rt/data/unisim_comp.v2	
 111728@Z8-256
-´
+•
 synthesizing module '%s'638*oasys2
-mkFTop_mm7052^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkFTop_mm705.v2
+mkFTop_mm7052X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFTop_mm705.v2
 348@Z8-638
-´
+•
 synthesizing module '%s'638*oasys2
-mkMLConsumer2^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkMLConsumer.v2
+mkMLConsumer2X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkMLConsumer.v2
 498@Z8-638
-ò
+ï
 synthesizing module '%s'638*oasys2
-FIFO22R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO22O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 A
 %s*synth22
@@ -105,17 +105,17 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-Ø
+≠
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FIFO22
-22
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+22
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-®
+•
 synthesizing module '%s'638*oasys2
-FIFO2__parameterized02R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized02O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 A
 %s*synth22
@@ -125,17 +125,17 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-ø
+Ω
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FIFO2__parameterized02
-22
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+22
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-®
+•
 synthesizing module '%s'638*oasys2
-FIFO2__parameterized12R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized12O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 @
 %s*synth21
@@ -145,62 +145,29 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-ø
+Ω
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FIFO2__parameterized12
-22
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+22
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-¬
+Ω
 %done synthesizing module '%s' (%s#%s)256*oasys2
 mkMLConsumer2
-32
-92^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkMLConsumer.v2
+32
+142X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkMLConsumer.v2
 498@Z8-256
-´
-synthesizing module '%s'638*oasys2
-mkMLProducer2^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkMLProducer.v2
-428@Z8-638
-®
+ó
+synthesizing module '%s'638*oasys2
+mkFAU2Q
+M/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFAU.v2
+668@Z8-638
+•
 synthesizing module '%s'638*oasys2
-FIFO2__parameterized22R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
-418@Z8-638
-@
-%s*synth21
-/	Parameter width bound to: 32 - type: integer 
-
-A
-%s*synth22
-0	Parameter guarded bound to: 1 - type: integer 
-
-ø
-%done synthesizing module '%s' (%s#%s)256*oasys2
-FIFO2__parameterized22
-32
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
-418@Z8-256
-¬
-%done synthesizing module '%s' (%s#%s)256*oasys2
-mkMLProducer2
-42
-92^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkMLProducer.v2
-428@Z8-256
-ß
-synthesizing module '%s'638*oasys2
-
-mkReceiver2\
-X/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkReceiver.v2
-508@Z8-638
-®
-synthesizing module '%s'638*oasys2
-FIFO2__parameterized32R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized22O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 A
 %s*synth22
@@ -210,17 +177,150 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-ø
+Ω
+%done synthesizing module '%s' (%s#%s)256*oasys2
+FIFO2__parameterized22
+32
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+418@Z8-256
+ï
+synthesizing module '%s'638*oasys2
+BRAM22O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/BRAM2.v2
+308@Z8-638
+6
+%s*synth2'
+%	Parameter PIPELINED bound to: 1'b0 
+
+E
+%s*synth26
+4	Parameter ADDR_WIDTH bound to: 14 - type: integer 
+
+F
+%s*synth27
+5	Parameter DATA_WIDTH bound to: 134 - type: integer 
+
+C
+%s*synth24
+2	Parameter MEMSIZE bound to: 15'b100000000000000 
+
+≠
+%done synthesizing module '%s' (%s#%s)256*oasys2
+BRAM22
+42
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/BRAM2.v2
+308@Z8-256
+ù
+synthesizing module '%s'638*oasys2
+	SizedFIFO2S
+O/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/SizedFIFO.v2
+418@Z8-638
+C
+%s*synth24
+2	Parameter p1width bound to: 134 - type: integer 
+
+A
+%s*synth22
+0	Parameter p2depth bound to: 3 - type: integer 
+
+F
+%s*synth27
+5	Parameter p3cntr_width bound to: 1 - type: integer 
+
+A
+%s*synth22
+0	Parameter guarded bound to: 1 - type: integer 
+
+µ
+%done synthesizing module '%s' (%s#%s)256*oasys2
+	SizedFIFO2
+52
+142S
+O/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/SizedFIFO.v2
+418@Z8-256
+ï
+synthesizing module '%s'638*oasys2
+FIFO12O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO1.v2
+428@Z8-638
+@
+%s*synth21
+/	Parameter width bound to: 14 - type: integer 
+
+A
+%s*synth22
+0	Parameter guarded bound to: 1 - type: integer 
+
+≠
+%done synthesizing module '%s' (%s#%s)256*oasys2
+FIFO12
+62
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO1.v2
+428@Z8-256
+Ø
+%done synthesizing module '%s' (%s#%s)256*oasys2
+mkFAU2
+72
+142Q
+M/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFAU.v2
+668@Z8-256
+ó
+synthesizing module '%s'638*oasys2
+mkFDU2Q
+M/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFDU.v2
+668@Z8-638
+Ø
+%done synthesizing module '%s' (%s#%s)256*oasys2
+mkFDU2
+82
+142Q
+M/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFDU.v2
+668@Z8-256
+•
+synthesizing module '%s'638*oasys2
+mkMLProducer2X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkMLProducer.v2
+428@Z8-638
+•
+synthesizing module '%s'638*oasys2
+FIFO2__parameterized32O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+418@Z8-638
+@
+%s*synth21
+/	Parameter width bound to: 32 - type: integer 
+
+A
+%s*synth22
+0	Parameter guarded bound to: 1 - type: integer 
+
+Ω
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FIFO2__parameterized32
-42
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+82
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-®
+Ω
+%done synthesizing module '%s' (%s#%s)256*oasys2
+mkMLProducer2
+92
+142X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkMLProducer.v2
+428@Z8-256
+°
+synthesizing module '%s'638*oasys2
+
+mkReceiver2V
+R/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkReceiver.v2
+508@Z8-638
+•
 synthesizing module '%s'638*oasys2
-FIFO2__parameterized42R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized42O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 ?
 %s*synth20
@@ -230,59 +330,79 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-ø
+Ω
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FIFO2__parameterized42
-42
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+92
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-‘
+Œ
 ?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2\
-X/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkReceiver.v2
+parallel_case2V
+R/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkReceiver.v2
 3458@Z8-3536
-‘
+Œ
 ?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2\
-X/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkReceiver.v2
+parallel_case2V
+R/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkReceiver.v2
 4168@Z8-3536
-æ
+∫
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
-mkReceiver2
-52
-92\
-X/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkReceiver.v2
+mkReceiver2
+102
+142V
+R/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkReceiver.v2
 508@Z8-256
-¢
+ü
 synthesizing module '%s'638*oasys2
 
-SyncResetA2W
-S/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/SyncResetA.v2
+SyncResetA2T
+P/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/SyncResetA.v2
 438@Z8-638
 C
 %s*synth24
 2	Parameter RSTDELAY bound to: 15 - type: integer 
 
-π
+∏
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
-SyncResetA2
-62
-92W
-S/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/SyncResetA.v2
+SyncResetA2
+112
+142T
+P/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/SyncResetA.v2
 438@Z8-256
-£
+ó
 synthesizing module '%s'638*oasys2
 
-mkSender2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
+mkSender2N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
 508@Z8-638
-®
+•
 synthesizing module '%s'638*oasys2
-FIFO2__parameterized52R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized52O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+418@Z8-638
+A
+%s*synth22
+0	Parameter width bound to: 133 - type: integer 
+
+A
+%s*synth22
+0	Parameter guarded bound to: 1 - type: integer 
+
+æ
+%done synthesizing module '%s' (%s#%s)256*oasys2
+FIFO2__parameterized52
+112
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+418@Z8-256
+•
+synthesizing module '%s'638*oasys2
+FIFO2__parameterized62O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 @
 %s*synth21
@@ -292,58 +412,53 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-ø
+æ
 %done synthesizing module '%s' (%s#%s)256*oasys2
-FIFO2__parameterized52
-62
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized62
+112
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-“
+∆
 ?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
-4218@Z8-3536
-“
+parallel_case2N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
+4848@Z8-3536
+∆
 ?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
-4438@Z8-3536
-“
+parallel_case2N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
+5258@Z8-3536
+∆
 ?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
-5068@Z8-3536
-“
-?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
-5418@Z8-3536
-∫
+parallel_case2N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
+5908@Z8-3536
+∞
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
-mkSender2
-72
-92Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
+mkSender2
+122
+142N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
 508@Z8-256
-¬
+æ
 %done synthesizing module '%s' (%s#%s)256*oasys2
-mkFTop_mm7052
-82
-92^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkFTop_mm705.v2
+mkFTop_mm7052
+132
+142X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFTop_mm705.v2
 348@Z8-256
-π
+µ
 %done synthesizing module '%s' (%s#%s)256*oasys2	
-fpgaTop2
-92
-92[
-W/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/fpgaTop_mm705.v2
+fpgaTop2
+142
+142U
+Q/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/fpgaTop_mm705.v2
 58@Z8-256
 â
 %s*synth2z
-xfinished Rtl Elaboration : Time (s): cpu = 00:00:26 ; elapsed = 00:00:26 . Memory (MB): peak = 451.277 ; gain = 338.027
+xfinished Rtl Elaboration : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 497.777 ; gain = 384.496
 
 (
 %s*synth2
@@ -413,14 +528,14 @@ E/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/kintex7/drc.xmlZ23-17
 
 Processing XDC Constraints
 244*projectZ1-262
-â
+Ü
 Parsing XDC File [%s]
-179*designutils2S
-Q/home/cms/projects/mm705_v3/mm705/mm705.srcs/constrs_1/imports/mm705_v3/kc705.xdcZ20-179
-í
+179*designutils2P
+N/home/cms/projects/mm705/mm705/mm705.srcs/constrs_1/imports/mm705_v3/kc705.xdcZ20-179
+è
 Finished Parsing XDC File [%s]
-178*designutils2S
-Q/home/cms/projects/mm705_v3/mm705/mm705.srcs/constrs_1/imports/mm705_v3/kc705.xdcZ20-178
+178*designutils2P
+N/home/cms/projects/mm705/mm705/mm705.srcs/constrs_1/imports/mm705_v3/kc705.xdcZ20-178
 ?
 &Completed Processing XDC Constraints
 
@@ -432,7 +547,7 @@ L  A total of 1 instances were transformed.
   IBUFGDS => IBUFDS: 1 instances
 Z1-111
 1
-%Phase 0 | Netlist Checksum: 386e0986
+%Phase 0 | Netlist Checksum: f294b406
 *common
 c
 WUsing Xilinx IP in: /opt/Xilinx/14.3/ISE_DS/ISE/coregen/ip/xilinx/primary/com/xilinx/ip*common
@@ -441,12 +556,12 @@ WUsing Xilinx IP in: /opt/Xilinx/14.3/ISE_DS/ISE/coregen/ip/xilinx/primary/com/x
 *common
 Ñ
 %s*synth2u
-sstarting synthesize : Time (s): cpu = 00:00:45 ; elapsed = 00:00:46 . Memory (MB): peak = 563.496 ; gain = 450.246
+sstarting synthesize : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 574.902 ; gain = 461.621
 
-¢
+ú
 synthesizing module '%s'638*oasys2	
-fpgaTop2[
-W/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/fpgaTop_mm705.v2
+fpgaTop2U
+Q/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/fpgaTop_mm705.v2
 58@Z8-638
 é
 synthesizing module '%s'638*oasys2	
@@ -473,27 +588,27 @@ I
 %s*synth2:
 8	Parameter IOSTANDARD bound to: DEFAULT - type: string 
 
-•
+¶
 %done synthesizing module '%s' (%s#%s)256*oasys2	
 IBUFGDS2
-12
-92C
+12
+142C
 ?/opt/Xilinx/14.3/ISE_DS/PlanAhead/scripts/rt/data/unisim_comp.v2	
 111728@Z8-256
-´
+•
 synthesizing module '%s'638*oasys2
-mkFTop_mm7052^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkFTop_mm705.v2
+mkFTop_mm7052X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFTop_mm705.v2
 348@Z8-638
-´
+•
 synthesizing module '%s'638*oasys2
-mkMLConsumer2^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkMLConsumer.v2
+mkMLConsumer2X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkMLConsumer.v2
 498@Z8-638
-ò
+ï
 synthesizing module '%s'638*oasys2
-FIFO22R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO22O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 A
 %s*synth22
@@ -503,17 +618,17 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-Ø
+≠
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FIFO22
-22
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+22
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-®
+•
 synthesizing module '%s'638*oasys2
-FIFO2__parameterized02R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized02O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 A
 %s*synth22
@@ -523,17 +638,17 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-ø
+Ω
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FIFO2__parameterized02
-22
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+22
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-®
+•
 synthesizing module '%s'638*oasys2
-FIFO2__parameterized12R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized12O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 @
 %s*synth21
@@ -543,62 +658,29 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-ø
+Ω
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FIFO2__parameterized12
-22
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+22
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-¬
+Ω
 %done synthesizing module '%s' (%s#%s)256*oasys2
 mkMLConsumer2
-32
-92^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkMLConsumer.v2
+32
+142X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkMLConsumer.v2
 498@Z8-256
-´
-synthesizing module '%s'638*oasys2
-mkMLProducer2^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkMLProducer.v2
-428@Z8-638
-®
+ó
+synthesizing module '%s'638*oasys2
+mkFAU2Q
+M/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFAU.v2
+668@Z8-638
+•
 synthesizing module '%s'638*oasys2
-FIFO2__parameterized22R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
-418@Z8-638
-@
-%s*synth21
-/	Parameter width bound to: 32 - type: integer 
-
-A
-%s*synth22
-0	Parameter guarded bound to: 1 - type: integer 
-
-ø
-%done synthesizing module '%s' (%s#%s)256*oasys2
-FIFO2__parameterized22
-32
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
-418@Z8-256
-¬
-%done synthesizing module '%s' (%s#%s)256*oasys2
-mkMLProducer2
-42
-92^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkMLProducer.v2
-428@Z8-256
-ß
-synthesizing module '%s'638*oasys2
-
-mkReceiver2\
-X/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkReceiver.v2
-508@Z8-638
-®
-synthesizing module '%s'638*oasys2
-FIFO2__parameterized32R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized22O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 A
 %s*synth22
@@ -608,17 +690,150 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-ø
+Ω
+%done synthesizing module '%s' (%s#%s)256*oasys2
+FIFO2__parameterized22
+32
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+418@Z8-256
+ï
+synthesizing module '%s'638*oasys2
+BRAM22O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/BRAM2.v2
+308@Z8-638
+6
+%s*synth2'
+%	Parameter PIPELINED bound to: 1'b0 
+
+E
+%s*synth26
+4	Parameter ADDR_WIDTH bound to: 14 - type: integer 
+
+F
+%s*synth27
+5	Parameter DATA_WIDTH bound to: 134 - type: integer 
+
+C
+%s*synth24
+2	Parameter MEMSIZE bound to: 15'b100000000000000 
+
+≠
+%done synthesizing module '%s' (%s#%s)256*oasys2
+BRAM22
+42
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/BRAM2.v2
+308@Z8-256
+ù
+synthesizing module '%s'638*oasys2
+	SizedFIFO2S
+O/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/SizedFIFO.v2
+418@Z8-638
+C
+%s*synth24
+2	Parameter p1width bound to: 134 - type: integer 
+
+A
+%s*synth22
+0	Parameter p2depth bound to: 3 - type: integer 
+
+F
+%s*synth27
+5	Parameter p3cntr_width bound to: 1 - type: integer 
+
+A
+%s*synth22
+0	Parameter guarded bound to: 1 - type: integer 
+
+µ
+%done synthesizing module '%s' (%s#%s)256*oasys2
+	SizedFIFO2
+52
+142S
+O/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/SizedFIFO.v2
+418@Z8-256
+ï
+synthesizing module '%s'638*oasys2
+FIFO12O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO1.v2
+428@Z8-638
+@
+%s*synth21
+/	Parameter width bound to: 14 - type: integer 
+
+A
+%s*synth22
+0	Parameter guarded bound to: 1 - type: integer 
+
+≠
+%done synthesizing module '%s' (%s#%s)256*oasys2
+FIFO12
+62
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO1.v2
+428@Z8-256
+Ø
+%done synthesizing module '%s' (%s#%s)256*oasys2
+mkFAU2
+72
+142Q
+M/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFAU.v2
+668@Z8-256
+ó
+synthesizing module '%s'638*oasys2
+mkFDU2Q
+M/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFDU.v2
+668@Z8-638
+Ø
+%done synthesizing module '%s' (%s#%s)256*oasys2
+mkFDU2
+82
+142Q
+M/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFDU.v2
+668@Z8-256
+•
+synthesizing module '%s'638*oasys2
+mkMLProducer2X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkMLProducer.v2
+428@Z8-638
+•
+synthesizing module '%s'638*oasys2
+FIFO2__parameterized32O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+418@Z8-638
+@
+%s*synth21
+/	Parameter width bound to: 32 - type: integer 
+
+A
+%s*synth22
+0	Parameter guarded bound to: 1 - type: integer 
+
+Ω
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FIFO2__parameterized32
-42
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+82
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-®
+Ω
+%done synthesizing module '%s' (%s#%s)256*oasys2
+mkMLProducer2
+92
+142X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkMLProducer.v2
+428@Z8-256
+°
+synthesizing module '%s'638*oasys2
+
+mkReceiver2V
+R/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkReceiver.v2
+508@Z8-638
+•
 synthesizing module '%s'638*oasys2
-FIFO2__parameterized42R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized42O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 ?
 %s*synth20
@@ -628,59 +843,79 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-ø
+Ω
 %done synthesizing module '%s' (%s#%s)256*oasys2
 FIFO2__parameterized42
-42
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+92
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-‘
+Œ
 ?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2\
-X/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkReceiver.v2
+parallel_case2V
+R/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkReceiver.v2
 3458@Z8-3536
-‘
+Œ
 ?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2\
-X/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkReceiver.v2
+parallel_case2V
+R/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkReceiver.v2
 4168@Z8-3536
-æ
+∫
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
-mkReceiver2
-52
-92\
-X/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkReceiver.v2
+mkReceiver2
+102
+142V
+R/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkReceiver.v2
 508@Z8-256
-¢
+ü
 synthesizing module '%s'638*oasys2
 
-SyncResetA2W
-S/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/SyncResetA.v2
+SyncResetA2T
+P/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/SyncResetA.v2
 438@Z8-638
 C
 %s*synth24
 2	Parameter RSTDELAY bound to: 15 - type: integer 
 
-π
+∏
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
-SyncResetA2
-62
-92W
-S/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/SyncResetA.v2
+SyncResetA2
+112
+142T
+P/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/SyncResetA.v2
 438@Z8-256
-£
+ó
 synthesizing module '%s'638*oasys2
 
-mkSender2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
+mkSender2N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
 508@Z8-638
-®
+•
 synthesizing module '%s'638*oasys2
-FIFO2__parameterized52R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized52O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+418@Z8-638
+A
+%s*synth22
+0	Parameter width bound to: 133 - type: integer 
+
+A
+%s*synth22
+0	Parameter guarded bound to: 1 - type: integer 
+
+æ
+%done synthesizing module '%s' (%s#%s)256*oasys2
+FIFO2__parameterized52
+112
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+418@Z8-256
+•
+synthesizing module '%s'638*oasys2
+FIFO2__parameterized62O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-638
 @
 %s*synth21
@@ -690,63 +925,58 @@ A
 %s*synth22
 0	Parameter guarded bound to: 1 - type: integer 
 
-ø
+æ
 %done synthesizing module '%s' (%s#%s)256*oasys2
-FIFO2__parameterized52
-62
-92R
-N/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
+FIFO2__parameterized62
+112
+142O
+K/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/Verilog/FIFO2.v2
 418@Z8-256
-“
+∆
 ?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
-4218@Z8-3536
-“
+parallel_case2N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
+4848@Z8-3536
+∆
 ?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
-4438@Z8-3536
-“
+parallel_case2N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
+5258@Z8-3536
+∆
 ?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
-5068@Z8-3536
-“
-?HDL ADVISOR - Pragma %s detected. Simulation mismatch may occur3412*oasys2
-parallel_case2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
-5418@Z8-3536
-à
+parallel_case2N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
+5908@Z8-3536
+¸
 }HDL ADVISOR - The operator resource <%s> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator3413*oasys2
-adder2Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
-5068@Z8-3537
-∫
+adder2N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
+4848@Z8-3537
+∞
 %done synthesizing module '%s' (%s#%s)256*oasys2
 
-mkSender2
-72
-92Z
-V/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkSender.v2
+mkSender2
+122
+142N
+J/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/rtl/mkSender.v2
 508@Z8-256
-¬
+æ
 %done synthesizing module '%s' (%s#%s)256*oasys2
-mkFTop_mm7052
-82
-92^
-Z/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/rtl/mkFTop_mm705.v2
+mkFTop_mm7052
+132
+142X
+T/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/rtl/mkFTop_mm705.v2
 348@Z8-256
-π
+µ
 %done synthesizing module '%s' (%s#%s)256*oasys2	
-fpgaTop2
-92
-92[
-W/home/cms/projects/mm705_v3/mm705/mm705.srcs/sources_1/imports/mm705_v3/fpgaTop_mm705.v2
+fpgaTop2
+142
+142U
+Q/home/cms/projects/mm705/mm705/mm705.srcs/sources_1/imports/mm705/fpgaTop_mm705.v2
 58@Z8-256
 Ñ
 %s*synth2u
-sfinished synthesize : Time (s): cpu = 00:01:00 ; elapsed = 00:01:01 . Memory (MB): peak = 668.473 ; gain = 555.223
+sfinished synthesize : Time (s): cpu = 00:01:04 ; elapsed = 00:01:06 . Memory (MB): peak = 700.676 ; gain = 587.395
 
 
 
@@ -773,7 +1003,7 @@ Q-------------------------------------------------------------------------------
 *common
 £
 %s*synth2ì
-êFinished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:00 ; elapsed = 00:01:01 . Memory (MB): peak = 668.473 ; gain = 555.223
+êFinished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:04 ; elapsed = 00:01:06 . Memory (MB): peak = 700.676 ; gain = 587.395
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -819,7 +1049,7 @@ Q-------------------------------------------------------------------------------
 *common
 ü
 %s*synth2è
-åFinished Loading Part and Timing Information : Time (s): cpu = 00:01:08 ; elapsed = 00:01:09 . Memory (MB): peak = 668.473 ; gain = 555.223
+åFinished Loading Part and Timing Information : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 700.676 ; gain = 587.395
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -861,7 +1091,15 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
-.	   2 Input     16 Bit       Adders := 8     
+.	   2 Input     16 Bit       Adders := 9     
+
+?
+%s*synth20
+.	   2 Input     14 Bit       Adders := 12    
+
+?
+%s*synth20
+.	   3 Input     14 Bit       Adders := 2     
 
 ?
 %s*synth20
@@ -877,7 +1115,23 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
-.	   2 Input      1 Bit       Adders := 1     
+.	   3 Input      3 Bit       Adders := 2     
+
+?
+%s*synth20
+.	   2 Input      1 Bit       Adders := 9     
+
+
+%s*synth2
++---XORs : 
+
+?
+%s*synth20
+.	   2 Input     14 Bit         XORs := 2     
+
+?
+%s*synth20
+.	   2 Input      3 Bit         XORs := 4     
 
 "
 %s*synth2
@@ -885,7 +1139,7 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
-.	              256 Bit    Registers := 2     
+.	              384 Bit    Registers := 2     
 
 ?
 %s*synth20
@@ -893,7 +1147,11 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
-.	              134 Bit    Registers := 4     
+.	              134 Bit    Registers := 24    
+
+?
+%s*synth20
+.	              133 Bit    Registers := 2     
 
 ?
 %s*synth20
@@ -921,7 +1179,11 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
-.	               16 Bit    Registers := 9     
+.	               16 Bit    Registers := 14    
+
+?
+%s*synth20
+.	               14 Bit    Registers := 14    
 
 ?
 %s*synth20
@@ -937,11 +1199,27 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
-.	                2 Bit    Registers := 2     
+.	                3 Bit    Registers := 4     
 
 ?
 %s*synth20
-.	                1 Bit    Registers := 45    
+.	                2 Bit    Registers := 6     
+
+?
+%s*synth20
+.	                1 Bit    Registers := 79    
+
+
+%s*synth2
++---RAMs : 
+
+?
+%s*synth20
+.	            2144K Bit         RAMs := 2     
+
+?
+%s*synth20
+.	              268 Bit         RAMs := 4     
 
 
 %s*synth2
@@ -949,15 +1227,15 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
+.	   2 Input    134 Bit        Muxes := 30    
+
+?
+%s*synth20
+.	   4 Input    133 Bit        Muxes := 1     
+
+?
+%s*synth20
 .	   2 Input    129 Bit        Muxes := 3     
-
-?
-%s*synth20
-.	   4 Input    128 Bit        Muxes := 1     
-
-?
-%s*synth20
-.	   3 Input    128 Bit        Muxes := 2     
 
 ?
 %s*synth20
@@ -965,11 +1243,11 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
-.	   2 Input     33 Bit        Muxes := 3     
+.	   3 Input    128 Bit        Muxes := 2     
 
 ?
 %s*synth20
-.	   3 Input     32 Bit        Muxes := 2     
+.	   2 Input     33 Bit        Muxes := 3     
 
 ?
 %s*synth20
@@ -977,11 +1255,19 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
-.	   2 Input     16 Bit        Muxes := 3     
+.	   3 Input     32 Bit        Muxes := 2     
 
 ?
 %s*synth20
 .	   4 Input     16 Bit        Muxes := 1     
+
+?
+%s*synth20
+.	   2 Input     16 Bit        Muxes := 3     
+
+?
+%s*synth20
+.	   2 Input     14 Bit        Muxes := 6     
 
 ?
 %s*synth20
@@ -993,10 +1279,6 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
-.	   4 Input      5 Bit        Muxes := 1     
-
-?
-%s*synth20
 .	   2 Input      5 Bit        Muxes := 4     
 
 ?
@@ -1005,15 +1287,15 @@ Q-------------------------------------------------------------------------------
 
 ?
 %s*synth20
-.	   4 Input      2 Bit        Muxes := 2     
-
-?
-%s*synth20
 .	   2 Input      2 Bit        Muxes := 3     
 
 ?
 %s*synth20
-.	   2 Input      1 Bit        Muxes := 59    
+.	   4 Input      2 Bit        Muxes := 2     
+
+?
+%s*synth20
+.	   2 Input      1 Bit        Muxes := 114   
 
 
 
@@ -1263,7 +1545,7 @@ Q-------------------------------------------------------------------------------
 *common
 ó
 %s*synth2á
-ÑFinished Cross Boundary Optimization : Time (s): cpu = 00:01:09 ; elapsed = 00:01:10 . Memory (MB): peak = 668.473 ; gain = 555.223
+ÑFinished Cross Boundary Optimization : Time (s): cpu = 00:01:13 ; elapsed = 00:01:15 . Memory (MB): peak = 700.676 ; gain = 587.395
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -1298,7 +1580,7 @@ x
 y
 6propagating constant %s across sequential element (%s)3333*oasys2
 02#
-!\ftop/producer1 /\lfsr_r_reg[29] Z8-3333
+!\ftop/producer1 /\lfsr_r_reg[11] Z8-3333
 ñ
 6propagating constant %s across sequential element (%s)3333*oasys2
 02@
@@ -1306,15 +1588,7 @@ y
 ñ
 6propagating constant %s across sequential element (%s)3333*oasys2
 02@
->\ftop/producer1 /dataInitVal_reg_inferred/\dataInitVal_reg[7] Z8-3333
-ñ
-6propagating constant %s across sequential element (%s)3333*oasys2
-02@
->\ftop/producer1 /dataInitVal_reg_inferred/\dataInitVal_reg[1] Z8-3333
-ñ
-6propagating constant %s across sequential element (%s)3333*oasys2
-12@
->\ftop/producer1 /dataInitVal_reg_inferred/\dataInitVal_reg[0] Z8-3333
+>\ftop/producer1 /dataInitVal_reg_inferred/\dataInitVal_reg[5] Z8-3333
 ñ
 6propagating constant %s across sequential element (%s)3333*oasys2
 02@
@@ -1322,7 +1596,11 @@ y
 ñ
 6propagating constant %s across sequential element (%s)3333*oasys2
 02@
->\ftop/producer1 /dataInitVal_reg_inferred/\dataInitVal_reg[3] Z8-3333
+>\ftop/producer1 /dataInitVal_reg_inferred/\dataInitVal_reg[7] Z8-3333
+ñ
+6propagating constant %s across sequential element (%s)3333*oasys2
+12@
+>\ftop/producer1 /dataInitVal_reg_inferred/\dataInitVal_reg[0] Z8-3333
 ñ
 6propagating constant %s across sequential element (%s)3333*oasys2
 02@
@@ -1330,19 +1608,31 @@ y
 ñ
 6propagating constant %s across sequential element (%s)3333*oasys2
 02@
->\ftop/producer1 /dataInitVal_reg_inferred/\dataInitVal_reg[5] Z8-3333
+>\ftop/producer1 /dataInitVal_reg_inferred/\dataInitVal_reg[1] Z8-3333
+ñ
+6propagating constant %s across sequential element (%s)3333*oasys2
+02@
+>\ftop/producer1 /dataInitVal_reg_inferred/\dataInitVal_reg[3] Z8-3333
 z
 6propagating constant %s across sequential element (%s)3333*oasys2
 02$
-"\ftop/producer1 /\lengthR_reg[29] Z8-3333
+"\ftop/producer1 /\lengthR_reg[13] Z8-3333
 r
 6propagating constant %s across sequential element (%s)3333*oasys2
 02
-\ftop/sender /\fh_reg[53] Z8-3333
+\ftop/sender /\fh_reg[76] Z8-3333
 r
 6propagating constant %s across sequential element (%s)3333*oasys2
 02
 \ftop/sender /\mh_reg[93] Z8-3333
+É
+6propagating constant %s across sequential element (%s)3333*oasys2
+02-
++\ftop/fdu /\bram_serverAdapterA_cnt_reg[0] Z8-3333
+É
+6propagating constant %s across sequential element (%s)3333*oasys2
+02-
++\ftop/fau /\bram_serverAdapterA_cnt_reg[0] Z8-3333
 x
 6propagating constant %s across sequential element (%s)3333*oasys2
 12"
@@ -1390,7 +1680,7 @@ z
 á
 6propagating constant %s across sequential element (%s)3333*oasys2
 021
-/\ftop/producer1 /\nextLengthF/data1_reg_reg[7] Z8-3333
+/\ftop/producer1 /\nextLengthF/data1_reg_reg[4] Z8-3333
 à
 6propagating constant %s across sequential element (%s)3333*oasys2
 022
@@ -1402,7 +1692,7 @@ Q-------------------------------------------------------------------------------
 *common
 ã
 %s*synth2|
-zFinished Area Optimization : Time (s): cpu = 00:01:20 ; elapsed = 00:01:22 . Memory (MB): peak = 676.508 ; gain = 563.258
+zFinished Area Optimization : Time (s): cpu = 00:01:31 ; elapsed = 00:01:34 . Memory (MB): peak = 700.676 ; gain = 587.395
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -1455,7 +1745,7 @@ Q-------------------------------------------------------------------------------
 *common
 õ
 %s*synth2ã
-àFinished Applying XDC Timing Constraints : Time (s): cpu = 00:01:20 ; elapsed = 00:01:22 . Memory (MB): peak = 676.508 ; gain = 563.258
+àFinished Applying XDC Timing Constraints : Time (s): cpu = 00:01:32 ; elapsed = 00:01:35 . Memory (MB): peak = 700.676 ; gain = 587.395
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -1465,9 +1755,9 @@ Q-------------------------------------------------------------------------------
 
 
 *common
-Ç
-%s*synth2s
-qinfo: (0) optimizing '\ftop/sender /\byteShifter_vec_reg[208] /D' (path group default) @ -1673.0ps(1/1) (0 secs)
+Ü
+%s*synth2w
+uinfo: (0) optimizing '\ftop/fau /i_6/\bram_memory/RAM_reg_66 /ENARDEN' (path group default) @ -586.0ps(1/1) (0 secs)
 
 G
 %s*synth28
@@ -1500,7 +1790,7 @@ Q-------------------------------------------------------------------------------
 *common
 ç
 %s*synth2~
-|Finished Timing Optimization : Time (s): cpu = 00:01:25 ; elapsed = 00:01:27 . Memory (MB): peak = 676.508 ; gain = 563.258
+|Finished Timing Optimization : Time (s): cpu = 00:01:41 ; elapsed = 00:01:44 . Memory (MB): peak = 700.676 ; gain = 587.395
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -1528,10 +1818,30 @@ Q-------------------------------------------------------------------------------
 
 
 *common
-Ü
+Ö
 6propagating constant %s across sequential element (%s)3333*oasys2
-020
-.\ftop/producer1/nextLengthF/data0_reg_reg[15] Z8-3333
+02/
+-\ftop/producer1/nextLengthF/data0_reg_reg[0] Z8-3333
+Ö
+6propagating constant %s across sequential element (%s)3333*oasys2
+02/
+-\ftop/producer1/nextLengthF/data0_reg_reg[1] Z8-3333
+Ö
+6propagating constant %s across sequential element (%s)3333*oasys2
+02/
+-\ftop/producer1/nextLengthF/data0_reg_reg[2] Z8-3333
+Ö
+6propagating constant %s across sequential element (%s)3333*oasys2
+02/
+-\ftop/producer1/nextLengthF/data0_reg_reg[3] Z8-3333
+Ö
+6propagating constant %s across sequential element (%s)3333*oasys2
+02/
+-\ftop/producer1/nextLengthF/data0_reg_reg[4] Z8-3333
+Ö
+6propagating constant %s across sequential element (%s)3333*oasys2
+02/
+-\ftop/producer1/nextLengthF/data0_reg_reg[5] Z8-3333
 Ö
 6propagating constant %s across sequential element (%s)3333*oasys2
 02/
@@ -1539,27 +1849,15 @@ Q-------------------------------------------------------------------------------
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
-.\ftop/producer1/nextLengthF/data0_reg_reg[23] Z8-3333
+.\ftop/producer1/nextLengthF/data0_reg_reg[13] Z8-3333
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
-.\ftop/producer1/nextLengthF/data0_reg_reg[31] Z8-3333
-Ö
-6propagating constant %s across sequential element (%s)3333*oasys2
-02/
--\ftop/producer1/nextLengthF/data0_reg_reg[3] Z8-3333
+.\ftop/producer1/nextLengthF/data0_reg_reg[14] Z8-3333
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
-.\ftop/producer1/nextLengthF/data0_reg_reg[19] Z8-3333
-Ü
-6propagating constant %s across sequential element (%s)3333*oasys2
-020
-.\ftop/producer1/nextLengthF/data0_reg_reg[27] Z8-3333
-Ö
-6propagating constant %s across sequential element (%s)3333*oasys2
-02/
--\ftop/producer1/nextLengthF/data0_reg_reg[0] Z8-3333
+.\ftop/producer1/nextLengthF/data0_reg_reg[15] Z8-3333
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
@@ -1567,23 +1865,7 @@ Q-------------------------------------------------------------------------------
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
-.\ftop/producer1/nextLengthF/data0_reg_reg[24] Z8-3333
-Ö
-6propagating constant %s across sequential element (%s)3333*oasys2
-02/
--\ftop/producer1/nextLengthF/data0_reg_reg[4] Z8-3333
-Ü
-6propagating constant %s across sequential element (%s)3333*oasys2
-020
-.\ftop/producer1/nextLengthF/data0_reg_reg[20] Z8-3333
-Ü
-6propagating constant %s across sequential element (%s)3333*oasys2
-020
-.\ftop/producer1/nextLengthF/data0_reg_reg[28] Z8-3333
-Ö
-6propagating constant %s across sequential element (%s)3333*oasys2
-02/
--\ftop/producer1/nextLengthF/data0_reg_reg[2] Z8-3333
+.\ftop/producer1/nextLengthF/data0_reg_reg[17] Z8-3333
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
@@ -1591,27 +1873,11 @@ Q-------------------------------------------------------------------------------
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
-.\ftop/producer1/nextLengthF/data0_reg_reg[26] Z8-3333
-Ö
-6propagating constant %s across sequential element (%s)3333*oasys2
-02/
--\ftop/producer1/nextLengthF/data0_reg_reg[1] Z8-3333
+.\ftop/producer1/nextLengthF/data0_reg_reg[19] Z8-3333
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
-.\ftop/producer1/nextLengthF/data0_reg_reg[17] Z8-3333
-Ü
-6propagating constant %s across sequential element (%s)3333*oasys2
-020
-.\ftop/producer1/nextLengthF/data0_reg_reg[25] Z8-3333
-Ü
-6propagating constant %s across sequential element (%s)3333*oasys2
-020
-.\ftop/producer1/nextLengthF/data0_reg_reg[13] Z8-3333
-Ö
-6propagating constant %s across sequential element (%s)3333*oasys2
-02/
--\ftop/producer1/nextLengthF/data0_reg_reg[5] Z8-3333
+.\ftop/producer1/nextLengthF/data0_reg_reg[20] Z8-3333
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
@@ -1619,7 +1885,23 @@ Q-------------------------------------------------------------------------------
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
-.\ftop/producer1/nextLengthF/data0_reg_reg[29] Z8-3333
+.\ftop/producer1/nextLengthF/data0_reg_reg[22] Z8-3333
+Ü
+6propagating constant %s across sequential element (%s)3333*oasys2
+020
+.\ftop/producer1/nextLengthF/data0_reg_reg[23] Z8-3333
+Ü
+6propagating constant %s across sequential element (%s)3333*oasys2
+020
+.\ftop/producer1/nextLengthF/data0_reg_reg[24] Z8-3333
+Ü
+6propagating constant %s across sequential element (%s)3333*oasys2
+020
+.\ftop/producer1/nextLengthF/data0_reg_reg[25] Z8-3333
+Ü
+6propagating constant %s across sequential element (%s)3333*oasys2
+020
+.\ftop/producer1/nextLengthF/data0_reg_reg[26] Z8-3333
 Ø
 ÅMessage '%s' appears more than %s times and has been disabled. User can change this message limit to see more message instances.
 14*common2
@@ -1628,7 +1910,7 @@ Q-------------------------------------------------------------------------------
 Ü
 6propagating constant %s across sequential element (%s)3333*oasys2
 020
-.\ftop/producer1/nextLengthF/data0_reg_reg[14] Z8-3333
+.\ftop/producer1/nextLengthF/data0_reg_reg[27] Z8-3333
 ]
 Q---------------------------------------------------------------------------------*common
 
@@ -1636,7 +1918,7 @@ Q-------------------------------------------------------------------------------
 *common
 å
 %s*synth2}
-{Finished Technology Mapping : Time (s): cpu = 00:01:41 ; elapsed = 00:01:43 . Memory (MB): peak = 768.195 ; gain = 654.945
+{Finished Technology Mapping : Time (s): cpu = 00:01:56 ; elapsed = 00:01:59 . Memory (MB): peak = 792.863 ; gain = 679.582
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -1743,7 +2025,7 @@ Q-------------------------------------------------------------------------------
 *common
 Ü
 %s*synth2w
-uFinished IO Insertion : Time (s): cpu = 00:01:42 ; elapsed = 00:01:45 . Memory (MB): peak = 768.195 ; gain = 654.945
+uFinished IO Insertion : Time (s): cpu = 00:01:58 ; elapsed = 00:02:02 . Memory (MB): peak = 792.863 ; gain = 679.582
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -1820,7 +2102,7 @@ Q-------------------------------------------------------------------------------
 *common
 ï
 %s*synth2Ö
-ÇFinished Rebuilding User Hierarchy : Time (s): cpu = 00:01:43 ; elapsed = 00:01:45 . Memory (MB): peak = 768.195 ; gain = 654.945
+ÇFinished Rebuilding User Hierarchy : Time (s): cpu = 00:01:59 ; elapsed = 00:02:02 . Memory (MB): peak = 792.863 ; gain = 679.582
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -1872,217 +2154,285 @@ Q-------------------------------------------------------------------------------
 %s*synth2
 Report Cell Usage: 
 
-%
-%s*synth2
------+-------+-----
+(
+%s*synth2
+-----+----------+-----
 
-%
-%s*synth2
-     |Cell   |Count
+(
+%s*synth2
+     |Cell      |Count
 
-%
-%s*synth2
------+-------+-----
+(
+%s*synth2
+-----+----------+-----
 
-%
-%s*synth2
-1    |BUFG   |    1
+(
+%s*synth2
+1    |BUFG      |    1
 
-%
-%s*synth2
-2    |CARRY4 |   81
+(
+%s*synth2
+2    |CARRY4    |  137
 
-%
-%s*synth2
-3    |LUT1   |  236
+(
+%s*synth2
+3    |LUT1      |  325
 
-%
-%s*synth2
-4    |LUT2   |  504
+(
+%s*synth2
+4    |LUT2      |  768
 
-%
-%s*synth2
-5    |LUT3   |  512
+(
+%s*synth2
+5    |LUT3      |  900
 
-%
-%s*synth2
-6    |LUT4   |  531
+(
+%s*synth2
+6    |LUT4      |  783
 
-%
-%s*synth2
-7    |LUT5   | 1094
+(
+%s*synth2
+7    |LUT5      | 1511
 
-%
-%s*synth2
-8    |LUT6   | 3499
+(
+%s*synth2
+8    |LUT6      | 4914
 
-%
-%s*synth2
-9    |MUXCY_L|    5
+(
+%s*synth2
+9    |MUXCY_L   |    5
 
-%
-%s*synth2
-10   |XORCY  |   10
+(
+%s*synth2
+10   |RAM32M    |   46
 
-%
-%s*synth2
-11   |FD     | 1474
+(
+%s*synth2
+11   |RAMB36E1_1|  134
 
-%
-%s*synth2
-12   |FDC    |   16
+(
+%s*synth2
+12   |XORCY     |   12
 
-%
-%s*synth2
-13   |FDE    | 1320
+(
+%s*synth2
+13   |FD        | 2202
 
-%
-%s*synth2
-14   |FDR    |  570
+(
+%s*synth2
+14   |FDC       |   16
 
-%
-%s*synth2
-15   |FDRE   |  479
+(
+%s*synth2
+15   |FDE       | 2301
 
-%
-%s*synth2
-16   |FDS    |    2
+(
+%s*synth2
+16   |FDR       |  856
 
-%
-%s*synth2
-17   |FDSE   |  114
+(
+%s*synth2
+17   |FDRE      |  672
 
-%
-%s*synth2
-18   |IBUF   |    1
+(
+%s*synth2
+18   |FDS       |    4
 
-%
-%s*synth2
-19   |IBUFGDS|    1
+(
+%s*synth2
+19   |FDSE      |  120
 
-%
-%s*synth2
-20   |OBUF   |    8
+(
+%s*synth2
+20   |IBUF      |    1
 
-%
-%s*synth2
------+-------+-----
+(
+%s*synth2
+21   |IBUFGDS   |    1
+
+(
+%s*synth2
+22   |OBUF      |    8
+
+(
+%s*synth2
+-----+----------+-----
 
 )
 %s*synth2
 Report Instance Areas: 
 
-L
-%s*synth2=
-;-----+----------------------+-----------------------+-----
+\
+%s*synth2M
+K-----+-------------------------------------+------------------------+-----
 
-L
-%s*synth2=
-;     |Instance              |Module                 |Cells
+\
+%s*synth2M
+K     |Instance                             |Module                  |Cells
 
-L
-%s*synth2=
-;-----+----------------------+-----------------------+-----
+\
+%s*synth2M
+K-----+-------------------------------------+------------------------+-----
 
-L
-%s*synth2=
-;1    |top                   |                       |10458
+\
+%s*synth2M
+K1    |top                                  |                        |15717
 
-L
-%s*synth2=
-;2    |  ftop                |mkFTop_mm705           |10447
+\
+%s*synth2M
+K2    |  ftop                               |mkFTop_mm705            |15706
 
-L
-%s*synth2=
-;3    |    producer2         |mkMLProducer           |  983
+\
+%s*synth2M
+K3    |    producer2                        |mkMLProducer            |  983
 
-L
-%s*synth2=
-;4    |      mesgEgressF     |FIFO2__parameterized0_8|  602
+\
+%s*synth2M
+K4    |      mesgEgressF                    |FIFO2__parameterized0_17|  602
 
-L
-%s*synth2=
-;5    |      nextLengthF     |FIFO2__parameterized2_9|   30
+\
+%s*synth2M
+K5    |      nextLengthF                    |FIFO2__parameterized3_18|   30
 
-L
-%s*synth2=
-;6    |    consumer          |mkMLConsumer           | 2090
+\
+%s*synth2M
+K6    |    consumer                         |mkMLConsumer            | 2093
 
-L
-%s*synth2=
-;7    |      dataIngressRcvF |FIFO2                  |  465
+\
+%s*synth2M
+K7    |      dataIngressRcvF                |FIFO2                   |  466
 
-L
-%s*synth2=
-;8    |      mesgIngressRcvF |FIFO2__parameterized0_4|  398
+\
+%s*synth2M
+K8    |      mesgIngressRcvF                |FIFO2__parameterized0_13|  398
 
-L
-%s*synth2=
-;9    |      dataIngressExpF |FIFO2_5                |  393
+\
+%s*synth2M
+K9    |      dataIngressExpF                |FIFO2_14                |  392
 
-L
-%s*synth2=
-;10   |      mesgIngressExpF |FIFO2__parameterized0_6|  398
+\
+%s*synth2M
+K10   |      mesgIngressExpF                |FIFO2__parameterized0_15|  398
 
-L
-%s*synth2=
-;11   |      metaIngressRcvF |FIFO2__parameterized1  |  166
+\
+%s*synth2M
+K11   |      metaIngressRcvF                |FIFO2__parameterized1   |  165
 
-L
-%s*synth2=
-;12   |      metaIngressExpF |FIFO2__parameterized1_7|  146
+\
+%s*synth2M
+K12   |      metaIngressExpF                |FIFO2__parameterized1_16|  146
 
-L
-%s*synth2=
-;13   |    sender            |mkSender               | 3417
+\
+%s*synth2M
+K13   |    fau                              |mkFAU                   | 1709
 
-L
-%s*synth2=
-;14   |      mesgIngressF    |FIFO2__parameterized0_2|  544
+\
+%s*synth2M
+K14   |      datagramIngressF               |FIFO2__parameterized2_7 |  457
 
-L
-%s*synth2=
-;15   |      datagramEgressF |FIFO2__parameterized3_3|  636
+\
+%s*synth2M
+K15   |      bram_memory                    |BRAM2_8                 |   67
 
-L
-%s*synth2=
-;16   |      fcF             |FIFO2__parameterized5  | 1528
+\
+%s*synth2M
+K16   |      lengthF                        |FIFO1_9                 |  119
 
-L
-%s*synth2=
-;17   |    rstndb            |SyncResetA             |   17
+\
+%s*synth2M
+K17   |      bram_serverAdapterB_outDataCore|SizedFIFO_10            |  445
 
-L
-%s*synth2=
-;18   |    receiver          |mkReceiver             | 2899
+\
+%s*synth2M
+K18   |      datagramEgressF                |FIFO2__parameterized2_11|  408
 
-L
-%s*synth2=
-;19   |      datagramIngressF|FIFO2__parameterized3  | 1106
+\
+%s*synth2M
+K19   |      ackF                           |FIFO2__parameterized2_12|   55
 
-L
-%s*synth2=
-;20   |      nbValF          |FIFO2__parameterized4  |  365
+\
+%s*synth2M
+K20   |    fdu                              |mkFDU                   | 1718
 
-L
-%s*synth2=
-;21   |      mesgEgressF     |FIFO2__parameterized0_1| 1092
+\
+%s*synth2M
+K21   |      datagramIngressF               |FIFO2__parameterized2_4 |  454
 
-L
-%s*synth2=
-;22   |    producer1         |mkMLProducer_0         |  962
+\
+%s*synth2M
+K22   |      bram_memory                    |BRAM2                   |   67
 
-L
-%s*synth2=
-;23   |      mesgEgressF     |FIFO2__parameterized0  |  556
+\
+%s*synth2M
+K23   |      lengthF                        |FIFO1                   |  100
 
-L
-%s*synth2=
-;24   |      nextLengthF     |FIFO2__parameterized2  |   55
+\
+%s*synth2M
+K24   |      bram_serverAdapterB_outDataCore|SizedFIFO               |  445
 
-L
-%s*synth2=
-;-----+----------------------+-----------------------+-----
+\
+%s*synth2M
+K25   |      datagramEgressF                |FIFO2__parameterized2_5 |  408
+
+\
+%s*synth2M
+K26   |      ackF                           |FIFO2__parameterized2_6 |   64
+
+\
+%s*synth2M
+K27   |    sender                           |mkSender                | 4452
+
+\
+%s*synth2M
+K28   |      mesgIngressF                   |FIFO2__parameterized0_2 |  489
+
+\
+%s*synth2M
+K29   |      fcF                            |FIFO2__parameterized6   |  109
+
+\
+%s*synth2M
+K30   |      bsEnqF                         |FIFO2__parameterized5   | 1031
+
+\
+%s*synth2M
+K31   |      datagramEgressF                |FIFO2__parameterized2_3 | 2074
+
+\
+%s*synth2M
+K32   |    rstndb                           |SyncResetA              |   19
+
+\
+%s*synth2M
+K33   |    receiver                         |mkReceiver              | 3692
+
+\
+%s*synth2M
+K34   |      datagramIngressF               |FIFO2__parameterized2   | 1130
+
+\
+%s*synth2M
+K35   |      nbValF                         |FIFO2__parameterized4   |  225
+
+\
+%s*synth2M
+K36   |      mesgEgressF                    |FIFO2__parameterized0_1 | 1869
+
+\
+%s*synth2M
+K37   |    producer1                        |mkMLProducer_0          |  962
+
+\
+%s*synth2M
+K38   |      mesgEgressF                    |FIFO2__parameterized0   |  556
+
+\
+%s*synth2M
+K39   |      nextLengthF                    |FIFO2__parameterized3   |   55
+
+\
+%s*synth2M
+K-----+-------------------------------------+------------------------+-----
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -2091,7 +2441,7 @@ Q-------------------------------------------------------------------------------
 *common
 î
 %s*synth2Ñ
-ÅFinished Writing Synthesis Report : Time (s): cpu = 00:01:43 ; elapsed = 00:01:45 . Memory (MB): peak = 768.195 ; gain = 654.945
+ÅFinished Writing Synthesis Report : Time (s): cpu = 00:01:59 ; elapsed = 00:02:02 . Memory (MB): peak = 792.863 ; gain = 679.582
 
 ]
 Q---------------------------------------------------------------------------------*common
@@ -2106,33 +2456,34 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2#
 !Synthesis Optimization Complete: 2
 
-00:01:412
+00:01:572
 
-00:01:432	
-768.1952	
-614.535Z17-268
+00:02:012	
+792.8632	
+639.172Z17-268
 M
 -Analyzing %s Unisim elements for replacement
 17*netlist2
-3388Z29-17
+5565Z29-17
 O
 2Unisim Transformation completed in %s CPU seconds
 28*netlist2
 0Z29-28
-∆
+®
 !Unisim Transformation Summary:
-%s111*project2â
-Ü  A total of 3393 instances were transformed.
-  (MUXCY,XORCY) => CARRY4: 10 instances
-  FD => FDCE: 1474 instances
+%s111*project2Î
+Ë  A total of 5438 instances were transformed.
+  (MUXCY,XORCY) => CARRY4: 12 instances
+  FD => FDCE: 2202 instances
   FDC => FDCE: 16 instances
-  FDE => FDCE: 1320 instances
-  FDR => FDRE: 570 instances
-  FDS => FDSE: 2 instances
+  FDE => FDCE: 2301 instances
+  FDR => FDRE: 856 instances
+  FDS => FDSE: 4 instances
   IBUFGDS => IBUFDS: 1 instances
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 46 instances
 Z1-111
 1
-%Phase 0 | Netlist Checksum: cd97e4f8
+%Phase 0 | Netlist Checksum: 20b7b5af
 *common
 :
 Releasing license: %s
@@ -2143,16 +2494,16 @@ I%sTime (s): cpu = %s ; elapsed = %s . Memory (MB): peak = %s ; gain = %s
 268*common2
 synth_design: 2
 
-00:01:462
+00:02:032
 
-00:01:482	
-793.2272	
-639.566Z17-268
+00:02:072	
+792.8632	
+639.172Z17-268
 Å
-ureport_utilization: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 793.227 ; gain = 0.000
+ureport_utilization: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 792.863 ; gain = 0.000
 *common
 S
 Exiting %s at %s...
 206*common2
 Vivado2
-Thu Nov  8 15:30:36 2012Z17-206
+Thu Nov 15 09:29:55 2012Z17-206

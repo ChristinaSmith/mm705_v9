@@ -40,7 +40,7 @@ module mkFAU(FAUIfc);
 FIFO#(HexBDG)                datagramIngressF   <- mkFIFO;
 FIFO#(HexBDG)                datagramEgressF    <- mkFIFO;
 FIFO#(HexBDG)                ackF               <- mkFIFO;
-FIFOF#(UInt#(14))            lengthF            <- mkFIFOF1;
+FIFO#(UInt#(14))            lengthF            <- mkFIFO1;
 Reg#(UInt#(14))               countWrd           <- mkReg(1); 
 Reg#(UInt#(16))              fid                <- mkReg(0);
 Reg#(UInt#(16))              fsCnt              <- mkReg(1000);

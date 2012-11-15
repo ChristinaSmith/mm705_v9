@@ -7,6 +7,8 @@ import MLProducer  ::*;
 import MLConsumer  ::*;
 import Sender      ::*;
 import Receiver    ::*;
+import FDU         ::*;
+import FAU         ::*;
 
 import Clocks      ::*;
 import Connectable ::*;
@@ -43,6 +45,8 @@ MLProducerIfc   producer2  <- mkMLProducer(reset_by rstndb, mLength, lMode, 0, 0
 MLConsumerIfc   consumer   <- mkMLConsumer(reset_by rstndb);
 SenderIfc       sender     <- mkSender(reset_by rstndb);
 ReceiverIfc     receiver   <- mkReceiver(reset_by rstndb);
+FDUIfc          fdu        <- mkFDU(reset_by rstndb);
+FAUIfc          fau        <- mkFAU(reset_by rstndb);
 
 
 rule countCycles;
@@ -58,7 +62,11 @@ endrule
 
 mkConnection(producer1.mesg, sender.mesg);
 
-mkConnection(sender.datagram, receiver.datagram);
+mkConnection(sender.datagram, fdu.datagramSnd);
+
+mkConnection(fdu.datagramRcv, fau.datagramSnd);
+
+mkConnection(fau.datagramRcv, receiver.datagram);
 
 mkConnection(receiver.mesg, consumer.mesgReceived);
 

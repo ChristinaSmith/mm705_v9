@@ -140,4 +140,9 @@ instance ByteVector #(RDMAMeta, 8);
 endinstance
 
 
+typedef struct {
+  UInt#(16) fid;
+  UInt#(4)  fduID;
+} FrameInFlight deriving (Bits, Eq);
+
 endpackage: DPPDefs

@@ -15,7 +15,7 @@ import ClientServer ::*;
 import DefaultValue ::*;
 
 interface SenderIfc;
-  interface Client#(HexBDG, HexBDG) datagram;
+  interface Get#(HexBDG) datagram;
   interface Put#(MLMesg) mesg;
 endinterface
 
@@ -193,9 +193,6 @@ rule frameSourcePump(byteShifter.bytes_available >= 16 || eof);
   datagramEgressF.enq(out);
 endrule
 
-  interface Client datagram;
-    interface request = toGet(datagramEgressF);
-    //interface response = toPut();
-  endinterface
-  interface mesg = toPut(mesgIngressF);
+interface datagram = toGet(datagramEgressF);
+interface mesg = toPut(mesgIngressF);
 endmodule

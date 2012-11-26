@@ -14,7 +14,7 @@ import ClientServer ::*;
 import DefaultValue ::*;
 
 interface ReceiverIfc;
-  interface Server#(HexBDG, HexBDG) datagram;
+  interface Put#(HexBDG) datagram;
   interface Get#(MLMesg) mesg;
 endinterface
 
@@ -139,9 +139,6 @@ endrule
   $display("MH: %0x, %0x, %0x, %0x, %0x, %0x, %0x, %0x, %0x", mh.tid, mh.fa, mh.fv, mh.nm, mh.ms, mh.da, mh.dl, mh.mt, mh.tm);
 endrule*/
 
-  interface Server datagram;
-    interface request = toPut(datagramIngressF);
-    //interface response = toGet();
-  endinterface
-  interface mesg = toGet(mesgEgressF);
+interface datagram = toPut(datagramIngressF);
+interface mesg = toGet(mesgEgressF);
 endmodule

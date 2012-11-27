@@ -55,8 +55,8 @@ Reg#(UInt#(14))              readAddr           <- mkReg(0);
 Reg#(UInt#(14))              writeAddr          <- mkReg(0);
 Reg#(Bool)                   sndFIF             <- mkReg(False);
 Accumulator2Ifc#(Int#(14))   readCredit         <- mkAccumulator2;
-Reg#(UInt#(16))              timeoutVal         <- mkReg(190);
-Reg#(UInt#(16))              timeoutCount       <- mkReg(190);
+Reg#(UInt#(16))              timeoutVal         <- mkReg(2000);
+Reg#(UInt#(16))              timeoutCount       <- mkReg(2000);
 Reg#(Bool)                   retransmit         <- mkReg(False);
 Reg#(Bool)                   isRunning          <- mkReg(True);
 

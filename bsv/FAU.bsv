@@ -45,10 +45,10 @@ FIFO#(HexBDG)                ackF               <- mkFIFO;
 FIFO#(UInt#(14))             lengthF            <- mkFIFO1;
 Reg#(UInt#(14))              countWrd           <- mkReg(1); 
 Reg#(UInt#(16))              fid                <- mkReg(0);
-Reg#(UInt#(16))              prevfid            <- mkReg(0);
 Reg#(Bit#(16))               did                <- mkReg(0);
 Reg#(Bit#(16))               sid                <- mkReg(0);
 Reg#(Bool)                   grabFID            <- mkReg(True);
+Reg#(Bool)                   isValFID           <- mkReg(False);
 Reg#(UInt#(14))              countRdReq         <- mkReg(0);
 Reg#(UInt#(14))              countRd            <- mkReg(0);
 Reg#(UInt#(14))              readAddr           <- mkReg(0);
@@ -61,28 +61,33 @@ cfg.latency    = 1;
 BRAM2Port#(UInt#(14), HexBDG) bram <- mkBRAM2Server(cfg);
 
 rule getFID(grabFID);
-  prevfid <= fid;
   HexByte y = datagramIngressF.first.data;
   did <= unpack({pack(y[0]), pack(y[1])});
   sid <= unpack({pack(y[2]), pack(y[3])});
   fid <= unpack({pack(y[4]), pack(y[5])});
+  isValFID <= (fid != unpack({pack(y[4]), pack(y[5])}));                    // check if fid is the same as the new fid coming in
   grabFID <= False;
 endrule
 
-rule writeBRAM(!grabFID);                                                              // For every incident Mesg word...
+rule writeBRAM(!grabFID);                                                    // For every incident Mesg word...
   let y = datagramIngressF.first; datagramIngressF.deq;                      // dequeue the incident Mesg
   Bool isEOP = y.isEOP;                                                      // detect if is an EOP
-  bram.portA.request.put(makeRequest(True, writeAddr, y));                   // write the data to BRAM
-  readCredit.acc1(1);                                                        // Add one to read credits
-  countWrd <= isEOP ? 1 : countWrd + 1;                                      // update our count of message length
-  if (isEOP) begin                                                           // at EOP ...
-    lengthF.enq(countWrd);                                                   // enq length of message (counted length)
-    grabFID <= True;                                                         // signal to get next FID from FDU
+  if(isValFID) begin                                                         // only write bram if first time to see fid
+    bram.portA.request.put(makeRequest(True, writeAddr, y));                   // write the data to BRAM
+    readCredit.acc1(1);                                                        // Add one to read credits
+    countWrd <= isEOP ? 1 : countWrd + 1;                                      // update our count of message length
+    writeAddr <= generateAddr(isEOP, writeAddr);                               // update the Write Address
+    if(isEOP) begin                                                           // at EOP ...
+      lengthF.enq(countWrd);                                                   // enq length of message (counted length)
+      $display("FAU: frame %0x received", fid);
+    end                                                                        // send a token to read port on EOP
+  end
+  if(isEOP) begin 
+    grabFID <= True;                                                          // signal to get next FID from FDU
     fidEgressF.enq(fid);
-    $display("FAU: frame %0x received", fid);
-  end                                                                        // send a token to read port on EOP
-  writeAddr <= generateAddr(isEOP, writeAddr);                               // update the Write Address
+  end
 endrule
+
 
 rule readReqBRAM(countRdReq < lengthF.first && readCredit > 0);    // When we have a read mesg token...
   HexBDG tmp = ?;
@@ -94,11 +99,14 @@ rule readReqBRAM(countRdReq < lengthF.first && readCredit > 0);    // When we ha
 endrule
 
 rule readBRAM;                                                               // For every read response from BRAM...
+  
   let d <- bram.portB.response.get;                                          // get the data
   Bool isEOP = (countRd == lengthF.first-1);                                    // check if it is an EOP
   countRd <= isEOP ? 0 : countRd + 1;                                        // update our read response position
-  if(prevfid != fid) datagramEgressF.enq(d);// send it off
-  if(isEOP)lengthF.deq; 
+ /* if(prevfid != fid)*/datagramEgressF.enq(d);  // send it off
+  if(isEOP) begin 
+    lengthF.deq;
+  end
 endrule
 
 

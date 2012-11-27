@@ -31,7 +31,7 @@ Reg#(UInt#(32)) count     <- mkReg(0);
 Reg#(UInt#(32)) length    <- mkRegU;
 
 // sls: specify these once
-UInt#(32)  mLength = 32;
+UInt#(32)  mLength = 8000;
 LengthMode lMode   = Constant; // Incremental;
 //LengthMode lMode   = Incremental;
 DataMode   dMode   = ZeroOrigin;
@@ -61,7 +61,7 @@ rule countCycles;
 endrule
 
 rule endSim;
-  if(cycleCount == 500)begin $display("Terminating Simulation..."); $finish; end
+  if(cycleCount == 15000)begin $display("Terminating Simulation..."); $finish; end
 endrule
 
 // MLProducer (payload source) to Sender

@@ -1,4 +1,4 @@
-// MergeFork.bsv
+// MergeForkFAU.bsv
 // Copyright (c) 2012 Atomic Rules LLC - ALL RIGHTS RESERVED
 // Christina Smith
 // FIXME!! Adding and removing L2 header should not be in the same module that merges and forks!!
@@ -6,9 +6,7 @@ import GetPut     ::*;
 import FIFO       ::*;
 import FIFOF      ::*;
 import Vector     ::*;
-import BRAM       ::*;
 
-import Accum      ::*;
 import DPPDefs    ::*;
 import MLDefs     ::*;
 
@@ -52,7 +50,6 @@ rule pumpHeader(isAckHeader && ackIngressF.notEmpty);
 endrule
 
 rule pumpAck(!isAckHeader);                        // Ack will always go to AckTracker
-//rule pumpAck;                        // Ack will always go to AckTracker
   let y = ackIngressF.first;
   if(y.isEOP)isAckHeader <= True;
   ackEgressF.enq(y);
@@ -60,11 +57,11 @@ rule pumpAck(!isAckHeader);                        // Ack will always go to AckT
 endrule
 
 
-interface egress = toGet(datagramEgressF);//TODO:input FIFO
-interface ack = toPut(ackIngressF); // TODO: to be used for ACKS
+interface egress = toGet(datagramEgressF);
+interface ack = toPut(ackIngressF);
   
 interface Server ingress;
-  interface request = toPut(datagramIngressF); //TODO: output FIFO
-  interface response = toGet(ackEgressF); //TODO: to be used for ACKS
+  interface request = toPut(datagramIngressF); 
+  interface response = toGet(ackEgressF); 
 endinterface
 endmodule

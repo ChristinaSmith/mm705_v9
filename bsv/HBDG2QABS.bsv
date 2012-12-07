@@ -1,4 +1,4 @@
-// FTop_mm705_toBit.bsv - the top level module
+// HBDG2QABS.bsv - the top level module
 // Copyright (c) 2012 Atomic Rules LLC - ALL RIGHTS RESERVED
 // Christina Smith
 
@@ -27,11 +27,10 @@ module mkHBDG2QABS(HBDG2QABSIfc);
 FIFO#(QABS)    qabsF   <- mkFIFO;
 FIFO#(HexBDG)  hexbdgF <- mkFIFO;
 Reg#(UInt#(5))  index   <- mkReg(0);
-Reg#(UInt#(5)) nbVal   <- mkReg(0);
+
 //(* descending_urgency= "funnel, drain" *)
 rule funnel;
   HexBDG hbdgIn = hexbdgF.first;
-//  nbVal <= hbdgIn.nbVal;
   Bool eop = hbdgIn.isEOP;
   if((hbdgIn.nbVal - index) < 4 || index == 12) hexbdgF.deq;
   QABS out = ?;
@@ -42,7 +41,7 @@ rule funnel;
     out[3] = (eop) ? tagged ValidEOP hbdgIn.data[index + 3] : tagged ValidNotEOP hbdgIn.data[index + 3]; 
   end
   else begin
-    out[0] = (eop) ? tagged ValidEOP hbdgIn.data[index]     : tagged ValidNotEOP hbdgIn.data[index];     // these indecies are wrong 
+    out[0] = (eop) ? tagged ValidEOP hbdgIn.data[index]     : tagged ValidNotEOP hbdgIn.data[index];     
     out[1] = (eop) ? tagged ValidEOP hbdgIn.data[index + 1] : tagged ValidNotEOP hbdgIn.data[index + 1]; 
     out[2] = (eop) ? tagged ValidEOP hbdgIn.data[index + 2] : tagged ValidNotEOP hbdgIn.data[index + 2]; 
     out[3] = (eop) ? tagged ValidEOP hbdgIn.data[index + 3] : tagged ValidNotEOP hbdgIn.data[index + 3]; 

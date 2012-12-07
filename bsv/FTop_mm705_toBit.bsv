@@ -51,7 +51,7 @@ Reset               sys1_rst       <- mkAsyncReset(1, rstndb, sys1_clk);
 IDELAYCTRL          idc            <- mkMYIDELAYCTRL(1);
 
 UInt#(32)  mLength = 32;
-LengthMode lMode   = Constant; // Incremental;
+LengthMode lMode   = Constant;
 DataMode   dMode   = ZeroOrigin;
 
 // producer1 is the source that we generating in the Generator
@@ -73,17 +73,9 @@ HBDG2QABSIfc        hbdg2qabs      <- mkHBDG2QABS(reset_by rstndb);
 
 Reg#(Bit#(32)) cycleCount <- mkReg(0, reset_by rstndb);
 
-
 rule countCycles;
   cycleCount <= cycleCount + 1;
-//  if(cycleCount%100==0)$display("[%0d] simulation cycle:%0d ...", $time, cycleCount);
 endrule
-
-rule endSim;
-//  if(cycleCount == 15000)begin $display("Terminating Simulation..."); $finish; end
-  if(cycleCount == 15000) $finish;
-endrule
-
 
 // MLProducer (payload source) to Sender
 mkConnection(producer1.mesg, sender.mesg);
@@ -100,33 +92,11 @@ mkConnection(fdu.frameAck, ackTracker.frameAck);
 // MergeForkFDU to AckTracker
 mkConnection(mfFDU.ack, ackTracker.ackIngress);
 
-// MergeForkFDU to MergeForkFAU
-//mkConnection(mfFDU.egress, mfFAU.ingress);
-
-// Added GMAC
 // MergeForkFDU to HBDG2QABS
 mkConnection(mfFDU.egress.request, hbdg2qabs.hbdg);
 
 // HBDG2QABS to GbeQABS
 mkConnection(hbdg2qabs.qabs, qabsFunnel.client.response);
-
-// MergeForkFAU to FAU#1
-//mkConnection(mfFAU.egress, fau.ingress);
-
-// AckAggregator to MergeForkFAU
-//mkConnection(ackAggregator.ackEgress, mfFAU.ack);
-
-// FAU#1 to AckAggregator
-//mkConnection(fau.frameAck, ackAggregator.frameAck);
-
-// FAU#1 to Receiver
-//mkConnection(fau.egress, receiver.datagram);
-
-// Receiver to Consumer
-//mkConnection(receiver.mesg, consumer.mesgReceived);
-
-// MLProducer (checker) to Consumer
-//mkConnection(producer2.mesg, consumer.mesgExpected);
 
 method Bit#(8) ledOut;
   Bit#(4) y = truncate(cycleCount >> 28);

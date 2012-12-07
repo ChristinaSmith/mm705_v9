@@ -1,4 +1,4 @@
-// MergeFork.bsv
+// MergeForkFDU.bsv
 // Copyright (c) 2012 Atomic Rules LLC - ALL RIGHTS RESERVED
 // Christina Smith
 // FIXME! Remove L2 header adding logic from merge fork, it is not merging or forking and should be decoupled from the concern of merge-fork
@@ -6,9 +6,7 @@ import GetPut     ::*;
 import FIFO       ::*;
 import FIFOF      ::*;
 import Vector     ::*;
-import BRAM       ::*;
 
-import Accum      ::*;
 import DPPDefs    ::*;
 import MLDefs     ::*;
 
@@ -52,18 +50,17 @@ rule rmAckHeader(isAckHeader);
 endrule
 
 rule pumpAck(!isAckHeader);                        // Ack will always go to AckTracker
-//rule pumpAck;                        // Ack will always go to AckTracker
   let y = ackIngressF.first;
   if(y.isEOP)isAckHeader <= True;
   ackEgressF.enq(y);
   ackIngressF.deq;
 endrule
 
-interface ingress = toPut(datagramIngressF);//TODO:input FIFO
-interface ack = toGet(ackEgressF); // TODO: to be used for ACKS
+interface ingress = toPut(datagramIngressF);
+interface ack = toGet(ackEgressF);
   
 interface Client egress;
-  interface request = toGet(datagramEgressF); //TODO: output FIFO
-  interface response = toPut(ackIngressF); //TODO: to be used for ACKS
+  interface request = toGet(datagramEgressF); 
+  interface response = toPut(ackIngressF); 
 endinterface
 endmodule

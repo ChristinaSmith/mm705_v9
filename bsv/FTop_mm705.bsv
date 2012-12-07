@@ -13,6 +13,7 @@ import MergeForkFDU    ::*;
 import MergeForkFAU    ::*;
 import AckTracker      ::*;
 import AckAggregator   ::*;
+import HBDG2QABS       ::*;
 
 import Clocks          ::*;
 import Connectable     ::*;
@@ -54,6 +55,7 @@ MergeForkFDUIfc    mfFDU         <- mkMergeForkFDU;
 MergeForkFAUIfc    mfFAU         <- mkMergeForkFAU;
 AckTrackerIfc   ackTracker <- mkAckTracker;
 AckAggregatorIfc ackAggregator <- mkAckAggregator;
+HBDG2QABSIfc        hbdg2qabs      <- mkHBDG2QABS;
 
 rule countCycles;
   cycleCount <= cycleCount + 1;
@@ -79,8 +81,12 @@ mkConnection(fdu.frameAck, ackTracker.frameAck);
 // MergeForkFDU to AckTracker
 mkConnection(mfFDU.ack, ackTracker.ackIngress);
 
-// MergeForkFDU to MergeForkFAU
-mkConnection(mfFDU.egress, mfFAU.ingress);
+// MergeForkFDU to HBDG2QABS
+mkConnection(mfFDU.egress.request, hbdg2qabs.hbdg); 
+
+/*mkConnectio
+
+mfFAU.ingress);
 
 // MergeForkFAU to FAU#1
 mkConnection(mfFAU.egress, fau.ingress);
@@ -100,6 +106,6 @@ mkConnection(receiver.mesg, consumer.mesgReceived);
 // MLProducer (checker) to Consumer
 mkConnection(producer2.mesg, consumer.mesgExpected);
 
-
+*/
 
 endmodule

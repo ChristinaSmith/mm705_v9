@@ -2,6 +2,8 @@
 // Copyright (c) 2012 Atomic Rules LLC - ALL RIGHTS RESERVED
 // Christina Smith
 
+// NOTE: For simulation, uncomment lines 33, 55-57 and comment out line 60. Use FTop_mm705.bsv instead of FTop_mm705_toBit.bsv
+
 import MLDefs          ::*; 
 import DPPDefs         ::*;
 import E8023           ::*;

@@ -1,9 +1,0 @@
-#-----------------------------------------------------------
-# Vivado v2012.3 (64-bit)
-# Build 209282 by xbuild on Thu Oct 18 20:46:04 MDT 2012
-# Start of session at: Thu Nov 15 10:09:37 2012
-# Process ID: 9256
-# Log file: /home/cms/projects/mm705/mm705/mm705.runs/impl_2/fpgaTop.rdi
-# Journal file: /home/cms/projects/mm705/mm705/mm705.runs/impl_2/vivado.jou
-#-----------------------------------------------------------
-source fpgaTop.tcl -notrace

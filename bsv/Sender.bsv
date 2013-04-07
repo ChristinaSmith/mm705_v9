@@ -73,14 +73,18 @@ endfunction
 // genFH makes a new Frame Header when one is needed.
 // By setting fhValid to True after firing, execution of this rule is suppressed
 // until fhValid is cleared when the frame composition logic is done with it...
+  
+UInt#(16) length = truncate(getMeta(mesgIngressF.first).length); // get message length so that we can form correct frame header (is this a ZLM? zero length message) 
+
 rule genFH (!fhValid);
+//  UInt#(16) length = truncate(getMeta(mesgIngressF.first).length); // get message length so that we can form correct frame header (is this a ZLM? zero length message) 
   fh <= DPPFrameHeader {
     did : 16'h2042,      // Destination
     sid : 16'h1042,      // Source
     fs  : (fh.fs + 1),   // Increment the frame-sequence number
     as  : 0,             // Ack Start
     ac  : 0,             // Ack Count
-    f   : 8'h01  };      // Frame as at least one message
+    f   : (length == 0) ? 8'h00 : 8'h01  };      // Frame as at least one message, for ZLM is this 0 or 1? will have meta data TODO
   fhValid <= True;
 endrule
 
@@ -98,18 +102,21 @@ endrule
 // genMH creates the MH that will be enqueued to the ByteShifter...
 rule genMH (!mhValid && fcs==MsgHead);
   mesgDataLen <= truncate(getMeta(mesgIngressF.first).length); // Capture the mesgDataLen
+  UInt#(16) lengthM = truncate(getMeta(mesgIngressF.first).length); // get message length so that we can form correct frame header (is this a ZLM? zero length message) 
   UInt#(16) bLenMD = (madeMeta) ? mesgDataLen : 8;    // TODO: Big-M message slicing to replace truncate
-  bytesRemainMD <= bLenMD;                            // Update state so that enqMD can operate
+  //if length is 0 (event), adjust bytes to reflect padding to 16B boundary for next FH, else just take the length
+  bytesRemainMD <= bLenMD;       // Update state so that enqMD can operate
   mh <= DPPMessageHeader {       // Update the Message Header structure...
     tid : (!madeMeta) ? mh.tid + 1 : mh.tid,  // Increment the transaction number only once per transaction
     fa  : 32'hFEED_C0DE,         // Flag address
     fv  : 32'hCAFE_BABE,         // Flag value
-    nm  : 2,                     // Number of messages in this transaction
-    ms  : (madeMeta) ? 0 : 1,    // Message sequence number
+    nm  : (lengthM == 0) ? 1 : 2, // Number of messages in this transaction (should this be 1 or 0 for ZLM?) TODO
+// fields above here same in all messages in the same transaction //
+    ms  : (madeMeta) ? 0 : 1,    // Message sequence number UNUSED, can remove !!!!!
     da  : 32'hBEEF_F00D,         // Data address (target write address)
     dl  : bLenMD,                // Length in Bytes of data that follows in MD field
-    mt  : (madeMeta) ? 0 : 1,    // Message Type
-    tm  : (madeMeta) ? 0 : 1  }; // Trailing message: True if at least one message after this one
+    mt  : (madeMeta) ? 0 : 1,    // Message Type UNUSED, can remove !!!!!!
+    tm  : (madeMeta) ? 0 : (lengthM == 0) ? 0 : 1  }; // Trailing message: True if at least one message after this one, if false, check to see if this is a zero length message 
   mhValid <= True;
 endrule
 
@@ -136,14 +143,20 @@ UInt#(6) bytesToEnq = truncate(min(bytesRemainMD, 16)); // Offer the min of "wan
 
 //rule enqMD(fcs==MsgData && byteShifter.space_available >= bytesToEnq);
 rule enqMD(fcs==MsgData);
-  Bool endOfFrame = madeMeta && (bytesRemainMD-extend(bytesToEnq)==0);
-
+  UInt#(16) len = truncate(getMeta(mesgIngressF.first).length);
+  mesgDataLen <= truncate(getMeta(mesgIngressF.first).length); // Capture the mesgDataLen
+  // endOfFrame happens if we have madeMeta data and we have less than 16B of data OR if the length of the data is 0
+  Bool endOfFrame = (madeMeta && (bytesRemainMD-extend(bytesToEnq)==0)) || (len == 0);
+  
   RDMAMeta rMeta = metaMorpher(getMeta(mesgIngressF.first)); // Get and transform the metadata
-  Vector#(8, Bit#(8)) rMetaV = toByteVector(rMeta);          // Put metadata in a vector
+  // if zero lenght (event), pad to 16B boundary for next frame, else go about normal business
+  Vector#(8, Bit#(8)) rMetaV = toByteVector(rMeta); // Put metadata in a vector
+ 
   HexByte rData = getData(mesgIngressF.first);               // Same for the data  
   HexByte dataToEnq = (!madeMeta) ? padHexByte(rMetaV) : rData;  // Select which meta/mesg
-
-  fcs <= (!madeMeta) ? MsgHead : (endOfFrame) ? FrmHead : MsgData;  // Next State
+  //altered fcs logic to accomodate for zero length messages (events), could need future work
+  fcs <= (!madeMeta) ? (mesgDataLen == 0) ? FrmHead: MsgHead : (endOfFrame) ? FrmHead : MsgData;  // Next State
+ // fcs <= (!madeMeta) ?  MsgHead : (endOfFrame) ? FrmHead : MsgData;  // Next State
   // madeMeta begins False, is True on the first enqMD, then remains set through the last enqMD...
   madeMeta <= !endOfFrame;  // madeMeta to remain asserted until all data fragments are sent
 

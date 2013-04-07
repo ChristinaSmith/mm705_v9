@@ -59,7 +59,8 @@ endfunction
 rule loadBS(byteShifter.space_available >= extend(datagramIngressF.first.nbVal));
   byteShifter.enq(datagramIngressF.first.nbVal, datagramIngressF.first.data);
   datagramIngressF.deq;
-  if(datagramIngressF.first.isEOP) nbValF.enq(datagramIngressF.first.nbVal);
+
+  if(datagramIngressF.first.isEOP) begin nbValF.enq(datagramIngressF.first.nbVal); $display("Receiver");end
 endrule
 
 //////////////// Deq ByteShifter /////////////////////
@@ -71,6 +72,7 @@ rule rmFrmHead(fds == FrmHead && byteShifter.bytes_available >= 10);
   fh <= fromByteVector(x);
   byteShifter.deq(10);
   fds <= MsgHead; 
+  madeMeta <= False;
 endrule
 
 // Deq MessageHeader from ByteShifter, store in state
@@ -95,17 +97,18 @@ endrule
 
 // Deq Meta data
 //rule rmMsgMeta(fds == MsgData && byteShifter.bytes_available >= 8 && bytesToDeq == 8 && bytesValid);
-rule rmMsgMeta(fds == MsgData && byteShifter.bytes_available >= truncate(bytesToDeq) && bytesToDeq == 8 && bytesValid);
+rule rmMsgMeta(fds == MsgData && byteShifter.bytes_available >= truncate(bytesToDeq) && bytesToDeq == 8 && bytesValid && /*added for length 8 messages*/madeMeta == False);
   HexByte tmp = byteShifter.bytes_out;
   Vector#(8, Bit#(8)) x = stripHexByte(tmp);
   RDMAMeta rMeta = fromByteVector(x);
   MLMeta meta = metaUnmorpher(rMeta);
   mesgEgressF.enq(tagged Meta meta);
   byteShifter.deq(8);
-  madeMeta <= False;
+  madeMeta <= True;
   bytesValid <= False;
-  fds <= MsgHead;
+  fds <= (meta.length == 0) ? FrmHead : MsgHead;
   mhPhase <= 0;
+  if(meta.length == 0) nbValF.deq;
 endrule
 
 // Deq data 16B

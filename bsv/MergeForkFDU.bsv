@@ -6,6 +6,7 @@ import GetPut     ::*;
 import FIFO       ::*;
 import FIFOF      ::*;
 import Vector     ::*;
+import ClientServer ::*;
 
 import DPPDefs    ::*;
 import MLDefs     ::*;
@@ -28,17 +29,25 @@ Reg#(Vector#(6, Bit#(8)))    macSrc             <- mkReg(unpack('h151413121110))
 Reg#(Vector#(2, Bit#(8)))    ethType            <- mkReg(unpack('h3333));
 Reg#(Bool)                   isDGheader         <- mkReg(True);
 Reg#(Bool)                   isAckHeader        <- mkReg(True);
- 
+Reg#(UInt#(16))              frameNum           <- mkReg(1); //used for debug display only 
+Reg#(UInt#(16))              headerNum          <- mkReg(1); //used for debug display only 
+
 rule pumpHeader(isDGheader && datagramIngressF.notEmpty);
   Vector#(12, Bit#(8)) macAddrs = append(macDst, macSrc);
   HexBDG x = HexBDG{data: padHexByte(append(macAddrs, ethType)), nbVal: 16, isEOP: False}; // FIXME! This is totally wrong, there are only 14 valid bytes in an L2 header.
   datagramEgressF.enq(x);
   isDGheader <= False;
+ // $display("MergeForkFDU: sent L2 header for frame %0x", headerNum);
+ // headerNum <= headerNum + 1;
 endrule
 
 rule pumpFrame(!isDGheader);                       // Will need to multiplex multiple FDUs
   let y = datagramIngressF.first;
-  if(y.isEOP) isDGheader <= True;
+  if(y.isEOP) begin
+    isDGheader <= True; 
+    $display("MergeForkFDU: sent frame %0x", frameNum); 
+    frameNum <= frameNum + 1; 
+  end
   datagramEgressF.enq(y);
   datagramIngressF.deq;
 endrule

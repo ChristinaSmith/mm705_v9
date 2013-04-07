@@ -25,7 +25,8 @@ module mkFTop_mm705(Empty);
 
 Reg#(Bit#(32)) cycleCount <- mkReg(0);
 
-UInt#(32)  mLength = 8000;
+UInt#(32)  mLength = 0;
+//LengthMode lMode   = Incremental; 
 LengthMode lMode   = Constant; 
 DataMode   dMode   = ZeroOrigin;
 
@@ -51,7 +52,7 @@ rule countCycles;
 endrule
 
 rule endSim;
-  if(cycleCount == 15000)begin $display("Terminating Simulation..."); $finish; end
+  if(cycleCount == 1500)begin $display("Terminating Simulation..."); $finish; end
 endrule
 
 // MLProducer (payload source) to Sender
@@ -69,7 +70,31 @@ mkConnection(fdu.frameAck, ackTracker.frameAck);
 // MergeForkFDU to AckTracker
 mkConnection(mfFDU.ack, ackTracker.ackIngress);
 
+/////////////////// WIRE HERE ///////////////////////
 // MergeForkFDU to HBDG2QABS
-mkConnection(mfFDU.egress.request, hbdg2qabs.hbdg); 
+//mkConnection(mfFDU.egress.request, hbdg2qabs.hbdg); 
+
+// MergeForkFDU to MergeForkFAU
+mkConnection(mfFDU.egress, mfFAU.ingress);
+////////////////// END WIRE /////////////////////////
+
+// MergeForkFAU to FAU
+mkConnection(mfFAU.egress, fau.ingress);
+
+// AckAggregator to MergeForkFAU
+mkConnection(ackAggregator.ackEgress, mfFAU.ack);
+
+// FAU to AckAggregator
+mkConnection(fau.frameAck, ackAggregator.frameAck);
+
+// FAU to Receiver
+mkConnection(fau.egress, receiver.datagram);
+
+// Receiver to Consumer
+mkConnection(receiver.mesg, consumer.mesgReceived);
+
+// Producer (control) to Consumer
+mkConnection(consumer.mesgExpected, producer2.mesg);
+
 
 endmodule

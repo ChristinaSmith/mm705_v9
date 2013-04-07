@@ -6,6 +6,7 @@ import GetPut     ::*;
 import FIFO       ::*;
 import FIFOF      ::*;
 import Vector     ::*;
+import ClientServer ::*;
 
 import DPPDefs    ::*;
 import MLDefs     ::*;
@@ -28,16 +29,24 @@ Reg#(Vector#(6, Bit#(8)))    macDst             <- mkReg(unpack('h050403020100))
 Reg#(Vector#(2, Bit#(8)))    ethType            <- mkReg(unpack('h3333));
 Reg#(Bool)                   isDGheader         <- mkReg(True);
 Reg#(Bool)                   isAckHeader        <- mkReg(True);
- 
+Reg#(UInt#(16))              headerNum          <- mkReg(1);
+Reg#(UInt#(16))              frameNum           <- mkReg(1);
+
 rule rmDGheader(isDGheader);
   HexBDG l2header = datagramIngressF.first;
   datagramIngressF.deq;
   isDGheader <= False;
+//  $display("MergeForkFAU: removed L2 header for frame %0x", headerNum);
+ // headerNum <= headerNum + 1;
 endrule
 
 rule pumpFrame(!isDGheader);                       // Will need to multiplex multiple FDUs
   let y = datagramIngressF.first;
-  if(y.isEOP)isDGheader <= True;
+  if(y.isEOP) begin 
+    isDGheader <= True; 
+    $display("MergeForkFAU: sent frame %0x", frameNum);
+    frameNum <= frameNum + 1; 
+  end
   datagramEgressF.enq(y);
   datagramIngressF.deq;
 endrule

@@ -13,6 +13,7 @@ import DPPDefs    ::*;
 import MLDefs     ::*;
 
 interface FDUIfc;
+  interface Put#(FIFOF#(Bit#(0))) free;  // enq'd when the BRAM is free to accept a frame, used to signal to the dispatch unit that this FDU is free
   interface Put#(HexBDG) datagramSnd;
   interface Get#(HexBDG) datagramRcv;
   interface Client#(UInt#(16), UInt#(16)) frameAck;
@@ -45,6 +46,7 @@ FIFO#(UInt#(16))             fidEgressF         <- mkFIFO;
 FIFO#(UInt#(16))             fidF               <- mkFIFO;
 FIFOF#(UInt#(14))            lengthF            <- mkFIFOF1;
 FIFOF#(Bit#(0))              readTriggerF       <- mkFIFOF1;
+FIFOF#(Bit#(0))              freeF              <- mkFIFOF1;   // holds token indicating that FDU is free to accept new frame
 Reg#(UInt#(16))              fid                <- mkReg(0);
 Reg#(Bool)                   isOk2Write         <- mkReg(True);
 Reg#(Bool)                   grabFID            <- mkReg(True);
@@ -59,11 +61,17 @@ Reg#(UInt#(16))              timeoutVal         <- mkReg(2000);
 Reg#(UInt#(16))              timeoutCount       <- mkReg(2000);
 Reg#(Bool)                   retransmit         <- mkReg(False);
 Reg#(Bool)                   isRunning          <- mkReg(True);
+Reg#(Bool)                   setFreeInit        <- mkReg(True);
 
 BRAM_Configure cfg = defaultValue;
 cfg.memorySize = 16384;
 cfg.latency    = 1;
 BRAM2Port#(UInt#(14), HexBDG) bram <- mkBRAM2Server(cfg);
+
+rule signalFreeInit(setFreeInit);      // used on reset to signal that FDU is free 
+  setFreeInit <= False;
+  freeF.enq(?);
+endrule
 
 rule getFID(grabFID);
   HexByte y = datagramIngressF.first.data;
@@ -126,6 +134,7 @@ rule releaseFrm;                                                             // 
     grabFID <= True;                                                         // get the next fid
     lengthF.deq;                                                             // done with the length
     retransmit <= False;                                                     // if we get an ack that matches the FID of the frame in buffer, deq the length of the frame indicating that we are infact done with it
+    freeF.enq(?);
   end                                                                        // compare the received fduID to our fduID, then signal buffer to write and get the next fid
 endrule
 
@@ -140,6 +149,7 @@ rule timeout(isRunning);                                                    // o
   end
 endrule
 
+interface free = toPut(freeF);                  
 interface datagramSnd = toPut(datagramIngressF);//TODO:input FIFO
 interface datagramRcv = toGet(datagramEgressF); //TODO: output FIFO
 interface Client frameAck;

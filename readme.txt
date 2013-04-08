@@ -1,0 +1,1 @@
+This is the first attempt at parallelizing the FDU/FAU's. I will begin by implementing two FDU's supplementing with the needed logic to flow with the design. I will then move to implementing two FAU's again supplementing with the appropriate logic for merging/forking. We will see how this goes!

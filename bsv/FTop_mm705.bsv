@@ -14,6 +14,7 @@ import MergeForkFAU    ::*;
 import AckTracker      ::*;
 import AckAggregator   ::*;
 import HBDG2QABS       ::*;
+import ForkSnd         ::*;
 
 import Clocks          ::*;
 import Connectable     ::*;
@@ -44,7 +45,8 @@ MergeForkFDUIfc    mfFDU          <- mkMergeForkFDU;
 MergeForkFAUIfc    mfFAU          <- mkMergeForkFAU;
 AckTrackerIfc      ackTracker     <- mkAckTracker;
 AckAggregatorIfc   ackAggregator  <- mkAckAggregator;
-HBDG2QABSIfc       hbdg2qabs      <- mkHBDG2QABS;
+ForkSndIfc         forkSnd        <- mkForkSnd;
+//HBDG2QABSIfc       hbdg2qabs      <- mkHBDG2QABS;
 
 rule countCycles;
   cycleCount <= cycleCount + 1;
@@ -58,8 +60,14 @@ endrule
 // MLProducer (payload source) to Sender
 mkConnection(producer1.mesg, sender.mesg);
 
-// Sender to FDU#1
-mkConnection(sender.datagram, fdu.datagramSnd);
+// Sender to ForkSnd
+mkConnection(sender.datagram, forkSnd.datagramRcv);
+
+// ForkSnd to FDU#1 Datagram
+mkConnection(forkSnd.datagramSnd, fdu.datagramSnd);
+
+// ForkSnd to FDU#1 free
+mkConnection(forkSnd.free, fdu.free);
 
 // FDU#1 to MergeForkFDU
 mkConnection(fdu.datagramRcv, mfFDU.ingress);

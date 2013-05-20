@@ -13,14 +13,16 @@ import MLDefs     ::*;
 
 interface MergeForkFDUIfc;
   interface Client#(HexBDG, HexBDG) egress;
-  interface Put#(HexBDG) ingress;
+  interface Put#(HexBDG) ingress1;
+  interface Put#(HexBDG) ingress2;
   interface Get#(HexBDG) ack;
 endinterface
 
 (* synthesize *)
 module mkMergeForkFDU(MergeForkFDUIfc);
 
-FIFOF#(HexBDG)               datagramIngressF   <- mkFIFOF;
+FIFOF#(HexBDG)               datagramIngressF1   <- mkFIFOF;
+FIFOF#(HexBDG)               datagramIngressF2   <- mkFIFOF;
 FIFO#(HexBDG)                datagramEgressF    <- mkFIFO;
 FIFO#(HexBDG)                ackIngressF        <- mkFIFO;
 FIFO#(HexBDG)                ackEgressF         <- mkFIFO;
@@ -32,7 +34,7 @@ Reg#(Bool)                   isAckHeader        <- mkReg(True);
 Reg#(UInt#(16))              frameNum           <- mkReg(1); //used for debug display only 
 Reg#(UInt#(16))              headerNum          <- mkReg(1); //used for debug display only 
 
-rule pumpHeader(isDGheader && datagramIngressF.notEmpty);
+rule pumpHeader(isDGheader && (datagramIngressF1.notEmpty || datagramIngressF2.notEmpty));
   Vector#(12, Bit#(8)) macAddrs = append(macDst, macSrc);
   HexBDG x = HexBDG{data: padHexByte(append(macAddrs, ethType)), nbVal: 16, isEOP: False}; // FIXME! This is totally wrong, there are only 14 valid bytes in an L2 header.
   datagramEgressF.enq(x);
@@ -42,14 +44,26 @@ rule pumpHeader(isDGheader && datagramIngressF.notEmpty);
 endrule
 
 rule pumpFrame(!isDGheader);                       // Will need to multiplex multiple FDUs
-  let y = datagramIngressF.first;
-  if(y.isEOP) begin
-    isDGheader <= True; 
-    $display("MergeForkFDU: sent frame %0x", frameNum); 
-    frameNum <= frameNum + 1; 
-  end
-  datagramEgressF.enq(y);
-  datagramIngressF.deq;
+if(datagramIngressF1.notEmpty) begin  
+  let y = datagramIngressF1.first;
+    if(y.isEOP) begin
+      isDGheader <= True; 
+      $display("MergeForkFDU: sent frame %0x", frameNum); 
+      frameNum <= frameNum + 1; 
+    end
+    datagramEgressF.enq(y);
+    datagramIngressF1.deq;
+end
+else if(datagramIngressF2.notEmpty) begin  
+  let y = datagramIngressF2.first;
+    if(y.isEOP) begin
+      isDGheader <= True; 
+      $display("MergeForkFDU: sent frame %0x", frameNum); 
+      frameNum <= frameNum + 1; 
+    end
+    datagramEgressF.enq(y);
+    datagramIngressF2.deq;
+end
 endrule
 
 rule rmAckHeader(isAckHeader);
@@ -65,7 +79,8 @@ rule pumpAck(!isAckHeader);                        // Ack will always go to AckT
   ackIngressF.deq;
 endrule
 
-interface ingress = toPut(datagramIngressF);
+interface ingress1 = toPut(datagramIngressF1);
+interface ingress2 = toPut(datagramIngressF2);
 interface ack = toGet(ackEgressF);
   
 interface Client egress;

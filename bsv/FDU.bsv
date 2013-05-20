@@ -13,7 +13,7 @@ import DPPDefs    ::*;
 import MLDefs     ::*;
 
 interface FDUIfc;
-  interface Put#(FIFOF#(Bit#(0))) free;  // enq'd when the BRAM is free to accept a frame, used to signal to the dispatch unit that this FDU is free
+  interface Get#(Bit#(0)) free;  // enq'd when the BRAM is free to accept a frame, used to signal to the dispatch unit that this FDU is free
   interface Put#(HexBDG) datagramSnd;
   interface Get#(HexBDG) datagramRcv;
   interface Client#(UInt#(16), UInt#(16)) frameAck;
@@ -149,7 +149,7 @@ rule timeout(isRunning);                                                    // o
   end
 endrule
 
-interface free = toPut(freeF);                  
+interface free = toGet(freeF);                  
 interface datagramSnd = toPut(datagramIngressF);//TODO:input FIFO
 interface datagramRcv = toGet(datagramEgressF); //TODO: output FIFO
 interface Client frameAck;

@@ -13,6 +13,7 @@ import DPPDefs    ::*;
 import MLDefs     ::*;
 
 interface FAUIfc;
+  interface Get#(Bit#(0)) free;  // enq'd when the BRAM is free to accept a frame, used to signal to the dispatch unit that this FAU is free
   interface Put#(HexBDG) ingress;
   interface Get#(HexBDG) egress;
   interface Get#(UInt#(16)) frameAck;
@@ -54,11 +55,18 @@ Reg#(UInt#(14))              countRd            <- mkReg(0);
 Reg#(UInt#(14))              readAddr           <- mkReg(0);
 Reg#(UInt#(14))              writeAddr          <- mkReg(0);
 Accumulator2Ifc#(Int#(14))   readCredit         <- mkAccumulator2;
+FIFOF#(Bit#(0))              freeF              <- mkFIFOF1;   // holds token indicating that FDU is free to accept new frame
+Reg#(Bool)                   setFreeInit        <- mkReg(True);
 
 BRAM_Configure cfg = defaultValue;
 cfg.memorySize = 16384;
 cfg.latency    = 1;
 BRAM2Port#(UInt#(14), HexBDG) bram <- mkBRAM2Server(cfg);
+
+rule signalFreeInit(setFreeInit);      // used on reset to signal that FDU is free 
+  setFreeInit <= False;
+  freeF.enq(?);
+endrule
 
 rule getFID(grabFID);
   HexByte y = datagramIngressF.first.data;
@@ -106,11 +114,12 @@ rule readBRAM;                                                               // 
  /* if(prevfid != fid)*/datagramEgressF.enq(d);  // send it off
   if(isEOP) begin 
     lengthF.deq;
+    freeF.enq(?);
   end
 endrule
 
 
-
+interface free = toGet(freeF);
 interface ingress = toPut(datagramIngressF);//TODO:input FIFO
 interface egress  = toGet(datagramEgressF); //TODO: to be used for ACKS
 interface frameAck = toGet(fidEgressF); 

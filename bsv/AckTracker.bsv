@@ -14,15 +14,18 @@ import DPPDefs    ::*;
 import MLDefs     ::*;
 
 interface AckTrackerIfc;
-  interface Server#(UInt#(16), UInt#(16)) frameAck;
+  interface Server#(UInt#(16), UInt#(16)) frameAck1;
+  interface Server#(UInt#(16), UInt#(16)) frameAck2;
   interface Put#(HexBDG) ackIngress;
 endinterface
 
 (* synthesize *)
 module mkAckTracker(AckTrackerIfc);
 
-FIFO#(UInt#(16))             fidIngressF        <- mkFIFO;
-FIFO#(UInt#(16))             fidEgressF         <- mkFIFO;
+FIFO#(UInt#(16))             fidIngressF1       <- mkFIFO;
+FIFO#(UInt#(16))             fidEgressF1        <- mkFIFO;
+FIFO#(UInt#(16))             fidIngressF2       <- mkFIFO;
+FIFO#(UInt#(16))             fidEgressF2        <- mkFIFO;
 FIFO#(HexBDG)                ackIngressF        <- mkFIFO;
 FIFO#(UInt#(16))             fidF               <- mkFIFO;
 
@@ -33,17 +36,27 @@ rule getFID;
 endrule
 
 
-rule checkAckFDU0(fidIngressF.first == fidF.first);
+rule checkAckFDU1(fidIngressF1.first == fidF.first || fidIngressF2.first == fidF.first);
   $display("AckTracker: ack received for frame %0x", fidF.first);
-  fidIngressF.deq;                               // deq fid from FDU fifo
-  fidEgressF.enq(fidF.first);                    // give FDU the fid we acked
-  fidF.deq;
+  if(fidIngressF1.first == fidF.first) begin  
+    fidIngressF1.deq;                               // deq fid from FDU fifo
+    fidEgressF1.enq(fidF.first);                    // give FDU the fid we acked
+    fidF.deq;
+  end
+  else if(fidIngressF2.first == fidF.first) begin  
+    fidIngressF2.deq;                               // deq fid from FDU fifo
+    fidEgressF2.enq(fidF.first);                    // give FDU the fid we acked
+    fidF.deq;
+  end
 endrule
 
-
-interface Server frameAck;
-  interface request = toPut(fidIngressF);
-  interface response = toGet(fidEgressF); 
+interface Server frameAck1;
+  interface request = toPut(fidIngressF1);
+  interface response = toGet(fidEgressF1); 
+endinterface
+interface Server frameAck2;
+  interface request = toPut(fidIngressF2);
+  interface response = toGet(fidEgressF2); 
 endinterface
 interface ackIngress = toPut(ackIngressF);
 endmodule

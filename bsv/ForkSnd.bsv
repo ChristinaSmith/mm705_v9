@@ -34,7 +34,8 @@ rule muxFrame1(freeF1.notEmpty && control);      // when we have an FDU availabl
   if(freeF1.notEmpty) begin         // check if FDU1 is free
     datagramEgressF1.enq(y);        // enq to FDU
     datagramIngressF.deq;           // deq the HexBDG
-    if(isEOP) begin control <= False; freeF1.deq;  end         // on EOP, close connection to FDU
+    if(isEOP) freeF1.deq;           // on EOP, close connection to FDU
+    control <= (isEOP) ? False : (!freeF1.notEmpty) ? False : True;
   end
 endrule
 
@@ -44,7 +45,8 @@ rule muxFrame2(freeF2.notEmpty && !control);
   if(freeF2.notEmpty) begin         // check if FDU2 is free
     datagramEgressF2.enq(y);        // enq to FDU
     datagramIngressF.deq;           // deq the HexBDG
-    if(isEOP) begin control <= True; freeF2.deq;  end         // on EOP, close connection to FDU
+    if(isEOP) freeF2.deq;           // on EOP, close connection to FDU
+    control <= (isEOP) ? True : (!freeF2.notEmpty) ? True : False;
   end
 endrule
 

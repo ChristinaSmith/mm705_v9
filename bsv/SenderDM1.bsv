@@ -57,6 +57,11 @@ Reg#(Bool)              bytesValid    <- mkReg(False);
 Reg#(UInt#(16))         frameSrcCnt   <- mkReg(0);
 
 Reg#(Bool)              eof           <- mkReg(False);
+
+
+Reg#(UInt#(16))         bytesToEnqR    <- mkReg(0);
+
+
 // Functions...
 function Bit#(8) addX (Bit#(8) y, Bit#(8) x) = y + x;
 
@@ -143,6 +148,11 @@ UInt#(6) bytesToEnq = truncate(min(bytesRemainMD, 16)); // Offer the min of "wan
 
 //rule enqMD(fcs==MsgData && byteShifter.space_available >= bytesToEnq);
 rule enqMD(fcs==MsgData);
+  ///////////////////////////////////////////
+ // bytesToEnqR <= min(bytesRemainMD, 16);
+  ///////////////////////////////////////////
+
+
   UInt#(16) len = truncate(getMeta(mesgIngressF.first).length);
   mesgDataLen <= truncate(getMeta(mesgIngressF.first).length); // Capture the mesgDataLen
   // endOfFrame happens if we have madeMeta data and we have less than 16B of data OR if the length of the data is 0
@@ -167,6 +177,12 @@ rule enqMD(fcs==MsgData);
 
   // Regardless of what kind of MD, do this...
   //byteShifter.enq(truncate(bytesToEnq), dataToEnq);
+
+  ////////////////////////
+ // bsEnqF.enq(tuple2(truncate(bytesToEnqR), dataToEnq));
+  ////////////////////////////
+
+
   bsEnqF.enq(tuple2(truncate(bytesToEnq), dataToEnq));
   bytesInFrame <= (endOfFrame) ? 0 : bytesInFrame + extend(bytesToEnq); 
   bytesRemainMD <= bytesRemainMD - extend(bytesToEnq);

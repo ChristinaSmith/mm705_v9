@@ -30,6 +30,7 @@ Reg#(Vector#(6, Bit#(8)))    macDst             <- mkReg(unpack('h000102030405))
 Reg#(Vector#(6, Bit#(8)))    macSrc             <- mkReg(unpack('h151413121110));
 Reg#(Vector#(2, Bit#(8)))    ethType            <- mkReg(unpack('h3333));
 Reg#(Bool)                   isDGheader         <- mkReg(True);
+Reg#(Bool)                   control            <- mkReg(False);
 Reg#(Bool)                   isAckHeader        <- mkReg(True);
 Reg#(UInt#(16))              frameNum           <- mkReg(1); //used for debug display only 
 Reg#(UInt#(16))              headerNum          <- mkReg(1); //used for debug display only 
@@ -43,7 +44,7 @@ rule pumpHeader(isDGheader && (datagramIngressF1.notEmpty || datagramIngressF2.n
  // headerNum <= headerNum + 1;
 endrule
 
-rule pumpFrame(!isDGheader);                       // Will need to multiplex multiple FDUs
+/*rule pumpFrame(!isDGheader);                       // Will need to multiplex multiple FDUs
 if(datagramIngressF1.notEmpty) begin  
   let y = datagramIngressF1.first;
     if(y.isEOP) begin
@@ -64,6 +65,30 @@ else if(datagramIngressF2.notEmpty) begin
     datagramEgressF.enq(y);
     datagramIngressF2.deq;
 end
+endrule*/
+
+rule pumpFrame1(!control); 
+  let y = datagramIngressF1.first;
+  control <= (!isDGheader && y.isEOP) ? True : False; 
+  if(y.isEOP) begin
+    $display("MergeForkFDU: sent frame %0x", frameNum); 
+    frameNum <= frameNum + 1; 
+    isDGheader <= True;
+  end
+  datagramEgressF.enq(y);
+  datagramIngressF1.deq;
+endrule
+
+rule pumpFrame2(control); 
+  let y = datagramIngressF2.first;
+  control <= (!isDGheader && y.isEOP) ? False : True; 
+  if(y.isEOP) begin
+    $display("MergeForkFDU: sent frame %0x", frameNum); 
+    frameNum <= frameNum + 1; 
+    isDGheader <= True;
+  end
+  datagramEgressF.enq(y);
+  datagramIngressF2.deq;
 endrule
 
 rule rmAckHeader(isAckHeader);

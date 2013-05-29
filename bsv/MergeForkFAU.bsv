@@ -56,8 +56,10 @@ rule pumpFrame1(!isDGheader && freeF1.notEmpty && control);      // Will need to
     $display("MergeForkFAU: sent frame %0x", frameNum);
     frameNum <= frameNum + 1; 
     freeF1.deq;
-    control <= False;
+    //control <= False;
   end
+ // control <= (y.isEOP) ? False : (!freeF1.notEmpty) ? False : True;
+ control <= (y.isEOP&&!freeF1.notEmpty)  ? False : (y.isEOP && freeF2.notEmpty)? False : True;
 endrule
 
 rule pumpFrame2(!isDGheader && freeF2.notEmpty && !control);      // Will need to multiplex multiple FAUs
@@ -69,8 +71,10 @@ rule pumpFrame2(!isDGheader && freeF2.notEmpty && !control);      // Will need t
     $display("MergeForkFAU: sent frame %0x", frameNum);
     frameNum <= frameNum + 1; 
     freeF2.deq;
-    control <= True;
+  //  control <= True;
   end
+//  control <= (y.isEOP) ? True : (!freeF2.notEmpty) ? True : False;
+control <= (y.isEOP && !freeF2.notEmpty) ?  True : (y.isEOP && freeF1.notEmpty) ? True : False;
 endrule
 
 rule pumpHeader(isAckHeader && ackIngressF.notEmpty);

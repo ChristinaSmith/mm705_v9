@@ -79,17 +79,24 @@ endrule
 
 // TO WIRE // 
 
-rule funnelAck(arbiterOut && ackIngressRcvF.notEmpty);     // Datagram to Wire from Receiving unit
+rule funnelAck(arbiterOut /*&& ackIngressRcvF.notEmpty*/);     // Datagram to Wire from Receiving unit
   egressWireOutF.enq(ackIngressRcvF.first);
   ackIngressRcvF.deq;
-  arbiterOut <= (ackIngressRcvF.first.isEOP) ? False : (!ackIngressRcvF.notEmpty) ? False : True;// Hold lock until EOP or if ackIngressRcvF doesnt have anything
+arbiterOut <= (ackIngressRcvF.first.isEOP) ? False : (!ackIngressRcvF.notEmpty) ? False : True;
+ // arbiterOut <= (ackIngressRcvF.first.isEOP || !ackIngressRcvF.notEmpty) ? False /*: (!ackIngressRcvF.notEmpty) ? False */: True;// Hold lock until EOP or if ackIngressRcvF doesnt have anything
 endrule
 
 
-rule funnelDatagram(!arbiterOut && datagramIngressSndF.notEmpty);   // Datagram to Wire from Sending unit
+rule assignArbiter;
+//  if(!ackIngressRcvF.notEmpty) arbiterOut <= False;
+arbiterOut <= (!ackIngressRcvF.notEmpty) ? False : True;
+endrule 
+
+rule funnelDatagram(!arbiterOut /*&& datagramIngressSndF.notEmpty*/);   // Datagram to Wire from Sending unit
   egressWireOutF.enq(datagramIngressSndF.first);
   datagramIngressSndF.deq;
-  arbiterOut <= (datagramIngressSndF.first.isEOP) ? True : (!datagramIngressSndF.notEmpty) ? True : False;// Hold lock until EOP or if ackIngressRcvF doesnt have anything
+arbiterOut <= (datagramIngressSndF.first.isEOP) ? True : (!datagramIngressSndF.notEmpty) ? True : False;// Hold lock until EOP or if ackIngressRcvF doesnt
+ // arbiterOut <= (datagramIngressSndF.first.isEOP || !datagramIngressSndF.notEmpty) ? True /*: (!datagramIngressSndF.notEmpty) ? True*/ : False;// Hold lock until EOP or if ackIngressRcvF doesnt have anything
 endrule
 
 

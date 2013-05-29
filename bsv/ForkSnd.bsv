@@ -28,26 +28,26 @@ FIFO#(HexBDG)   datagramEgressF1    <- mkFIFO;
 FIFO#(HexBDG)   datagramEgressF2    <- mkFIFO;
 Reg#(Bool)      control             <- mkReg(True);
 
-rule muxFrame1(freeF1.notEmpty && control);      // when we have an FDU available...
+rule muxFrame1(/*freeF1.notEmpty && */control);      // when we have an FDU available...
   let y = datagramIngressF.first;   // grab HexBDG of frame
   Bool isEOP = y.isEOP;             // check EOP
   if(freeF1.notEmpty) begin         // check if FDU1 is free
     datagramEgressF1.enq(y);        // enq to FDU
     datagramIngressF.deq;           // deq the HexBDG
     if(isEOP) freeF1.deq;           // on EOP, close connection to FDU
-    control <= (isEOP) ? False : (!freeF1.notEmpty) ? False : True;
   end
+  control <= (isEOP) ? False : (!freeF1.notEmpty) ? False : True;
 endrule
 
-rule muxFrame2(freeF2.notEmpty && !control);
+rule muxFrame2(/*freeF2.notEmpty &&*/ !control);
   let y = datagramIngressF.first;   // grab HexBDG of frame
   Bool isEOP = y.isEOP;             // check EOP
   if(freeF2.notEmpty) begin         // check if FDU2 is free
     datagramEgressF2.enq(y);        // enq to FDU
     datagramIngressF.deq;           // deq the HexBDG
     if(isEOP) freeF2.deq;           // on EOP, close connection to FDU
-    control <= (isEOP) ? True : (!freeF2.notEmpty) ? True : False;
   end
+  control <= (isEOP) ? True : (!freeF2.notEmpty) ? True : False;
 endrule
 
 interface free2 = toPut(freeF2);

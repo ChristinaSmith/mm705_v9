@@ -27,29 +27,30 @@ FIFOF#(UInt#(16))             fidIngressF2      <- mkFIFOF;
 FIFO#(HexBDG)                 ackEgressF        <- mkFIFO;
 FIFO#(UInt#(16))              numFrmsF          <- mkFIFO;
 Reg#(UInt#(16))               fsCnt             <- mkReg(1000);
-//Reg#(Bool)                   dropAck       <- mkReg(True);
+Reg#(Bool)                   dropAck       <- mkReg(True);
+Reg#(Bool)                   dropAck2       <- mkReg(True);
 
 // dropAck logic used to test retransmission, should be excluded under normal operating conditions
 
 rule sendAck;
   if(fidIngressF1.notEmpty) begin
   Vector#(10, Bit#(8)) fhV = toByteVector(DPPFrameHeader{did:2042,sid:1042,fs:fsCnt,as:fidIngressF1.first,ac:1,f:0}); //create ack frame
-//  if(!dropAck) begin   
+  if(!dropAck) begin   
     ackEgressF.enq(HexBDG{data: padHexByte(fhV), nbVal: 10, isEOP: True});         // send ack back to FDU
     fsCnt <= fsCnt + 1;                                                            // increase fid local to FAU
     $display("AckAggregator: ack sent for frame %0x",fidIngressF1.first);
-//  end
-//  dropAck <= False;                                                                
+  end
+  dropAck <= False;                                                                
   fidIngressF1.deq;
   end
 else if(fidIngressF2.notEmpty) begin
   Vector#(10, Bit#(8)) fhV = toByteVector(DPPFrameHeader{did:2042,sid:1042,fs:fsCnt,as:fidIngressF2.first,ac:1,f:0}); //create ack frame
-//  if(!dropAck) begin   
+  if(!dropAck2) begin   
     ackEgressF.enq(HexBDG{data: padHexByte(fhV), nbVal: 10, isEOP: True});         // send ack back to FDU
     fsCnt <= fsCnt + 1;                                                            // increase fid local to FAU
     $display("AckAggregator: ack sent for frame %0x",fidIngressF2.first);
-//  end
-//  dropAck <= False;                                                                
+  end
+  dropAck2 <= False;                                                                
   fidIngressF2.deq;
   end
 endrule  

@@ -19,7 +19,7 @@ interface FDUIfc;
   interface Client#(UInt#(16), UInt#(16)) frameAck;
 endinterface
 
-function BRAMRequest#(UInt#(14), HexBDG) makeRequest(Bool write, UInt#(14) addr, HexBDG data);
+function BRAMRequest#(UInt#(10), HexBDG) makeRequest(Bool write, UInt#(10) addr, HexBDG data);
   return BRAMRequest{
                     write: write,
                     responseOnWrite: False,
@@ -28,10 +28,10 @@ function BRAMRequest#(UInt#(14), HexBDG) makeRequest(Bool write, UInt#(14) addr,
                     };
 endfunction
 
-function UInt#(14) generateAddr(Bool isEOP, UInt#(14) oldAddr);
-  Bit#(14) newAddr = pack(oldAddr);
-  newAddr[13] = ~newAddr[13];
-  newAddr[12:0] = 0;
+function UInt#(10) generateAddr(Bool isEOP, UInt#(10) oldAddr);
+  Bit#(10) newAddr = pack(oldAddr);
+  newAddr[9] = ~newAddr[9];
+  newAddr[8:0] = 0;
   return isEOP ? unpack(newAddr) : oldAddr + 1;
 endfunction
 
@@ -44,19 +44,19 @@ FIFO#(HexBDG)                datagramEgressF    <- mkFIFO;
 FIFO#(UInt#(16))             fidIngressF        <- mkFIFO;
 FIFO#(UInt#(16))             fidEgressF         <- mkFIFO;
 FIFO#(UInt#(16))             fidF               <- mkFIFO;
-FIFOF#(UInt#(14))            lengthF            <- mkFIFOF1;
+FIFOF#(UInt#(10))            lengthF            <- mkFIFOF1;
 FIFOF#(Bit#(0))              readTriggerF       <- mkFIFOF1;
 FIFOF#(Bit#(0))              freeF              <- mkFIFOF1;   // holds token indicating that FDU is free to accept new frame
 Reg#(UInt#(16))              fid                <- mkReg(0);
 Reg#(Bool)                   isOk2Write         <- mkReg(True);
 Reg#(Bool)                   grabFID            <- mkReg(True);
-Reg#(UInt#(14))              countWrd           <- mkReg(1); 
-Reg#(UInt#(14))              countRdReq         <- mkReg(0);
-Reg#(UInt#(14))              countRd            <- mkReg(0);
-Reg#(UInt#(14))              readAddr           <- mkReg(0);
-Reg#(UInt#(14))              writeAddr          <- mkReg(0);
+Reg#(UInt#(10))              countWrd           <- mkReg(1); 
+Reg#(UInt#(10))              countRdReq         <- mkReg(0);
+Reg#(UInt#(10))              countRd            <- mkReg(0);
+Reg#(UInt#(10))              readAddr           <- mkReg(0);
+Reg#(UInt#(10))              writeAddr          <- mkReg(0);
 Reg#(Bool)                   sndFIF             <- mkReg(False);
-Accumulator2Ifc#(Int#(14))   readCredit         <- mkAccumulator2;
+Accumulator2Ifc#(Int#(10))   readCredit         <- mkAccumulator2;
 Reg#(UInt#(16))              timeoutVal         <- mkReg(200);
 Reg#(UInt#(16))              timeoutCount       <- mkReg(200);
 Reg#(Bool)                   retransmit         <- mkReg(False);
@@ -64,9 +64,9 @@ Reg#(Bool)                   isRunning          <- mkReg(True);
 Reg#(Bool)                   setFreeInit        <- mkReg(True);
 
 BRAM_Configure cfg = defaultValue;
-cfg.memorySize = 16384;
+cfg.memorySize = 1024;
 cfg.latency    = 1;
-BRAM2Port#(UInt#(14), HexBDG) bram <- mkBRAM2Server(cfg);
+BRAM2Port#(UInt#(10), HexBDG) bram <- mkBRAM2Server(cfg);
 
 rule signalFreeInit(setFreeInit);      // used on reset to signal that FDU is free 
   setFreeInit <= False;
